@@ -2,13 +2,22 @@ const container = document.querySelector(".container");
 const displayClock = container.querySelector(".clock");
 const displayDay = container.querySelector(".day");
 const displaySaying = container.querySelector(".saying");
-const nama = prompt("Masukkan Nama Anda : ");
+const displayQuotes = container.querySelector(".quote");
+const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
+const nama = inputNama.charAt(0).toUpperCase() + inputNama.slice(1);
+
+// 
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const saying = ["Good Morning", "Good Afternoon", "Good Evening"];
 
-const qoutes = {
+const quotes = {
     "Sunday": `Take a rest ${nama}!`,
-    "Monday": ``
+    "Monday": `Only you can change your life. Nobody else can do it for you.`,
+    "Tuesday": "Success is not final; failure is not fatal: It is the courage to continue that counts.",
+    "Wednesday": "It is better to fail in originality than to succeed in imitation.",
+    "Thursday": "The simple act of paying attention can take you a long way.",
+    "Friday": "I never dreamed about success. I worked for it.",
+    "Saturday": "Experience is a hard teacher because she gives the test first, the lesson afterwards."
 };
 
 // function saying
@@ -23,6 +32,10 @@ function sayingdisplay(hrs) {
     }
 
     return say;
+}
+
+function showQuotes(day) {
+    return quotes[day];
 }
 
 const repeat = setInterval(function () {
@@ -44,10 +57,12 @@ const repeat = setInterval(function () {
         hr = "0" + currentTime.getHours;
     };
 
-    const clock = `${hr}:${min}:${seconds} `
+    const clock = `${hr}:${min}:${seconds}`
+    console.log(clock);
 
     // display day
     displayDay.innerText = weekDay[currentTime.getDay()]
+    let day = displayDay.innerText;
     displayDay.style.fontSize = "3rem";
     displayDay.style.fontWeight = "500"
 
@@ -59,5 +74,10 @@ const repeat = setInterval(function () {
     // display saying
     displaySaying.innerText = sayingdisplay(hr);
     displaySaying.style.fontSize = "4rem"
+
+    // display qoutes
+    displayQuotes.innerText = showQuotes(day);
+    displayQuotes.style.margin = "2rem 0 0 0";
+    displayQuotes.style.fontSize = "1.5rem";
 
 }, 1000);
