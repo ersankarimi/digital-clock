@@ -1,8 +1,16 @@
+// Variabel
 const container = document.querySelector(".container");
 const displayClock = container.querySelector(".clock");
 const displayDay = container.querySelector(".day");
 const displaySaying = container.querySelector(".saying");
 const displayQuotes = container.querySelector(".quote");
+const moreButton = container.querySelector("#more-btn");
+const popoverBottom = container.querySelector("#popover");
+moreButton.addEventListener("click", function () {
+    popoverBottom.classList.toggle("hide")
+})
+
+
 const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
 const nama = inputNama.charAt(0).toUpperCase() + inputNama.slice(1);
 

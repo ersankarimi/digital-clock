@@ -15,12 +15,26 @@
         <div class="display">
             <p class="day"></p>
             <div class="display-clock">
-                <img src="assets/img/more-horizontal.svg" alt="more button" class="more-btn hide">
+
+                <div class="square hide">
+                    hide
+                </div>
 
                 <p class="clock"></p>
 
-                <div class="more-btn primary">
-                    <img src="assets/img/more-horizontal.png" alt="more button" class="more-btn-icon">
+                <div id="more-btn" class="more-btn">
+                    <div class="more-btn-primary">
+                        <img src="assets/img/more-horizontal.png" alt="more button" class="more-btn-icon">
+                    </div>
+
+                    <div id="popover" class="popover-bottom hide">
+                        <label for="12clock" class="label-clock-format">24-Hour Clock</label>
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+                                tabindex="0" checked>
+                            <label class="onoffswitch-label" for="myonoffswitch"></label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <p class="saying"></p>
