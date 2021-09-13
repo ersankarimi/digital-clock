@@ -1,20 +1,33 @@
+"use strict";
+
 // Variabel
+
+// container variabel
 const container = document.querySelector(".container");
+
+// display text variabel
 const displayClock = container.querySelector(".clock");
 const displayDay = container.querySelector(".day");
 const displaySaying = container.querySelector(".saying");
 const displayQuotes = container.querySelector(".quote");
+
+// more button variabel
 const moreButton = container.querySelector("#more-btn");
+
+// popover button
 const popoverBottom = container.querySelector("#popover");
 moreButton.addEventListener("click", function () {
-    popoverBottom.classList.toggle("hide")
+    popoverBottom.classList.toggle("hide");
 })
 
-
+// get name for input variabel
 const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
 const nama = inputNama.charAt(0).toUpperCase() + inputNama.slice(1);
 
-// 
+// get checkbox element variabel
+const checkbox = container.querySelector(".onoffswitch-checkbox");
+
+// list text to display on screen varibel
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const saying = ["Good Morning", "Good Afternoon", "Good Evening"];
 
@@ -28,25 +41,60 @@ const quotes = {
     "Saturday": "Experience is a hard teacher because she gives the test first, the lesson afterwards."
 };
 
-// function saying
-function sayingdisplay(hrs) {
+
+// Function
+
+// function saying 24 clock
+function sayingdisplay24(hrs) {
+    const clock = parseInt(hrs[0] + hrs[1])
     let say = nama;
-    if (hrs >= 0 && hrs <= 12) {
+    if (clock >= 0 && clock <= 12) {
         say = `${saying[0]}, ${nama}.`;
-    } else if (hrs > 12 && hrs <= 18) {
+    } else if (clock > 12 && clock <= 18) {
         say = `${saying[1]}, ${nama}.`
     } else {
         say = `${saying[2]}, ${nama}.`
-    }
+    };
 
     return say;
-}
+};
+// function saying 12 clock
+function sayingdisplay12(hrs) {
+    let hours = hrs.getHours()
 
+    let say = nama;
+
+    let ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+
+    if (ampm == "AM") {
+        if (hours >= 0 && hours <= 12) {
+            say = `${saying[0]}, ${nama}.`;
+        }
+    } else {
+        if (hours >= 1 && hours <= 6) {
+            say = `${saying[1]}, ${nama}.`
+        } else {
+            say = `${saying[2]}, ${nama}.`
+        }
+    }
+    return say;
+};
+
+// function show quotes
 function showQuotes(day) {
     return quotes[day];
-}
+};
 
-const repeat = setInterval(function () {
+// function show day
+function showDay() {
+    const currentTime = new Date();
+    return weekDay[currentTime.getDay()];
+};
+
+// function 24 clock format
+function twentyFourClock(clk) {
     const currentTime = new Date();
 
     // variabel second , hr , min
@@ -64,28 +112,39 @@ const repeat = setInterval(function () {
     if (hr < 10) {
         hr = "0" + currentTime.getHours;
     };
+    clk = `${hr}:${min}:${seconds}`;
 
-    const clock = `${hr}:${min}:${seconds}`
-    console.log(clock);
+    return clk;
+};
 
-    // display day
-    displayDay.innerText = weekDay[currentTime.getDay()]
-    let day = displayDay.innerText;
-    displayDay.style.fontSize = "3rem";
-    displayDay.style.fontWeight = "500"
+// function 12 clock format
+function formatAMPM(date) {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let second = date.getSeconds();
 
-    // display clock
-    displayClock.innerText = clock;
-    displayClock.style.fontSize = "10rem"
-    displayClock.style.margin = "0 0 1rem 0"
+    let ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    second = second < 10 ? '0' + second : second;
 
-    // display saying
-    displaySaying.innerText = sayingdisplay(hr);
-    displaySaying.style.fontSize = "4rem"
+    let strTime = `${hours}:${minutes}:${second}`;
 
-    // display qoutes
-    displayQuotes.innerText = showQuotes(day);
-    displayQuotes.style.margin = "2rem 0 0 0";
-    displayQuotes.style.fontSize = "1.5rem";
+    return strTime;
+};
 
-}, 1000);
+
+// function switch to 12 clock format
+function switchClockFormat() {
+    checkbox.addEventListener("click", e => {
+        if (checkbox.checked == true) {
+            let clock = twentyFourClock()
+            displayClock.innerText = twentyFourClock(clock);
+            displaySaying.innerText = sayingdisplay24(clock)
+        } else {
+            displayClock.innerText = formatAMPM(new Date);
+            displaySaying.innerText = sayingdisplay12(new Date)
+        };
+    });
+};
