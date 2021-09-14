@@ -1,7 +1,6 @@
 "use strict";
 
 // Variabel
-
 // container variabel
 const container = document.querySelector(".container");
 
@@ -29,12 +28,12 @@ const checkbox = container.querySelector(".onoffswitch-checkbox");
 
 // list text to display on screen varibel
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const saying = ["Good Morning", "Good Afternoon", "Good Evening"];
+const saying = ["Good morning", "Good afternoon", "Good evening"];
 
 const quotes = {
     "Sunday": `Take a rest ${nama}!`,
     "Monday": `Only you can change your life. Nobody else can do it for you.`,
-    "Tuesday": "Success is not final; failure is not fatal: It is the courage to continue that counts.",
+    "Tuesday": "Success is not final. Failure is not fatal. It is the courage to continue that counts.",
     "Wednesday": "It is better to fail in originality than to succeed in imitation.",
     "Thursday": "The simple act of paying attention can take you a long way.",
     "Friday": "I never dreamed about success. I worked for it.",
@@ -43,7 +42,6 @@ const quotes = {
 
 
 // Function
-
 // function saying 24 clock
 function sayingdisplay24(hrs) {
     const clock = parseInt(hrs[0] + hrs[1])
@@ -113,6 +111,7 @@ function twentyFourClock(clk) {
         hr = "0" + currentTime.getHours;
     };
     clk = `${hr}:${min}:${seconds}`;
+    // clk = `${hr}:${min}`;
 
     return clk;
 };
@@ -130,10 +129,10 @@ function formatAMPM(date) {
     second = second < 10 ? '0' + second : second;
 
     let strTime = `${hours}:${minutes}:${second}`;
+    // let strTime = `${hours}:${minutes}`;
 
     return strTime;
 };
-
 
 // function switch to 12 clock format
 function switchClockFormat() {
@@ -146,5 +145,8 @@ function switchClockFormat() {
             displayClock.innerText = formatAMPM(new Date);
             displaySaying.innerText = sayingdisplay12(new Date)
         };
+
+        let el = checkbox.checked.toString()
+        checkStatus(el);
     });
 };

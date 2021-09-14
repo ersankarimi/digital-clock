@@ -1,11 +1,16 @@
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
+
+    // loadTime(value)
     const repeat = setInterval(function () {
         // variabel clock
-        if (checkbox.checked == true) {
+        let valueLocalStorage = getValue();
+        console.log(valueLocalStorage);
+
+        if (valueLocalStorage === "true") {
             let clock = twentyFourClock()
+            console.log(clock);
             displayClock.innerText = twentyFourClock(clock);
-            displaySaying.innerText = sayingdisplay24(clock)
             displaySaying.innerText = sayingdisplay24(clock)
         } else {
             displayClock.innerText = formatAMPM(new Date);
