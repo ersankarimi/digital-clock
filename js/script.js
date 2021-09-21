@@ -19,12 +19,10 @@ moreButton.addEventListener("click", function () {
     popoverBottom.classList.toggle("hide");
 })
 
-// get name for input variabel
-const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
-const nama = inputNama.charAt(0).toUpperCase() + inputNama.slice(1);
+
 
 // get checkbox element variabel
-const checkbox = container.querySelector(".onoffswitch-checkbox");
+let checkbox = container.querySelector(".onoffswitch-checkbox");
 
 // list text to display on screen varibel
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -147,6 +145,6 @@ function switchClockFormat() {
         };
 
         let el = checkbox.checked.toString()
-        checkStatus(el);
+        checkStatusClockFormat(el);
     });
 };

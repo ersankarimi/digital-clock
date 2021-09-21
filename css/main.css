@@ -34,7 +34,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-image: url(/assets/img/36.jpg);
+  background-image: url(/assets/img/wallpaper/36.jpg);
   background-size: cover;
   -o-object-fit: cover;
      object-fit: cover;
@@ -47,6 +47,59 @@ body {
   padding: 1rem;
   color: #fff;
   text-align: center;
+}
+
+.display .random-icon {
+  background: rgba(255, 255, 255, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding: 1em;
+  margin: 1em;
+}
+
+.display .random-icon .random-wallpapers,
+.display .random-icon .random-quotes {
+  margin: 0 .8em;
+  cursor: pointer;
+}
+
+.display .random-icon .random-wallpapers .placeholder,
+.display .random-icon .random-quotes .placeholder {
+  position: absolute;
+  margin: 10px;
+  font-size: .8rem;
+  padding: .3em;
+  border: solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(51, 51, 51, 0.8);
+}
+
+.display .random-icon .random-wallpapers .placeholder.wallpaper,
+.display .random-icon .random-quotes .placeholder.wallpaper {
+  right: 39%;
+  cursor: context-menu;
+  opacity: 0;
+}
+
+.display .random-icon .random-wallpapers .placeholder.quotes,
+.display .random-icon .random-quotes .placeholder.quotes {
+  right: 35%;
+  cursor: context-menu;
+  opacity: 0;
+}
+
+.display .random-icon .random-wallpapers:hover .placeholder.wallpaper {
+  opacity: 1;
+}
+
+.display .random-icon .random-quotes:hover .placeholder.quotes {
+  opacity: 1;
 }
 
 .display-clock {

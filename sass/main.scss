@@ -28,7 +28,7 @@ body {
     align-items: center;
     align-content: center;
     justify-content: center;
-    background-image: url(/assets/img/36.jpg);
+    background-image: url(/assets/img/wallpaper/36.jpg);
     background-size: cover;
     object-fit: cover;
     object-position: center;
@@ -39,6 +39,52 @@ body {
     padding: 1rem;
     color: #fff;
     text-align: center;
+
+    // random wallpaper and quotes style
+    .random-icon {
+        background: rgba(255, 255, 255, .3);
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-content: center;
+        padding: 1em;
+        margin: 1em;
+
+        .random-wallpapers,
+        .random-quotes {
+            margin: 0 .8em;
+            cursor: pointer;
+
+            .placeholder {
+                position: absolute;
+                margin: 10px;
+                font-size: .8rem;
+                padding: .3em;
+                border: solid rgba(255, 255, 255, .5);
+                background-color: rgba(51, 51, 51, .8);
+            }
+
+            .placeholder.wallpaper {
+                right: 39%;
+                cursor: context-menu;
+                opacity: 0;
+            }
+
+            .placeholder.quotes {
+                right: 35%;
+                cursor: context-menu;
+                opacity: 0;
+            }
+        }
+
+        .random-wallpapers:hover .placeholder.wallpaper {
+            opacity: 1;
+        }
+
+        .random-quotes:hover .placeholder.quotes {
+            opacity: 1;
+        }
+    }
 }
 
 .display-clock {

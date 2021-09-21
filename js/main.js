@@ -1,21 +1,39 @@
+"use strict";
+
+// variabel to get name on display
+let named = getNameFromLocalStorage();
+// get name for input variabel
+let nama;
+
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
+    // pengecekan apakah kita belum mengisi nama apa sudah
 
+    if (named != null || named != undefined) {
+        nama = getNameFromLocalStorage();
+        console.log(named);
+    } else {
+        // get name for input variabel
+        const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
+        const namaToLocal = inputNama.charAt(0).toUpperCase() + inputNama.slice(1);
+        setNameToLocalStorage(namaToLocal);
+        nama = getNameFromLocalStorage()
+    };
     // loadTime(value)
     const repeat = setInterval(function () {
         // variabel clock
-        let valueLocalStorage = getValue();
+        let valueLocalStorage = getValueClockFormat();
         console.log(valueLocalStorage);
 
         if (valueLocalStorage === "true") {
             let clock = twentyFourClock()
-            console.log(clock);
+            // console.log(clock);
             displayClock.innerText = twentyFourClock(clock);
             displaySaying.innerText = sayingdisplay24(clock)
         } else {
             displayClock.innerText = formatAMPM(new Date);
             displaySaying.innerText = sayingdisplay12(new Date)
-        }
+        };
 
         switchClockFormat();
 
