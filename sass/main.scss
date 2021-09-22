@@ -1,7 +1,7 @@
 /* My Font */
 @font-face {
     font-family: "digital-7";
-    src: url(font/digital-7.ttf);
+    src: url(/font/digital-7.ttf);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
@@ -28,7 +28,7 @@ body {
     align-items: center;
     align-content: center;
     justify-content: center;
-    background-image: url('36.jpg');
+    background-image: url("../assets/img/wallpaper/14.jpg");
     background-size: cover;
     object-fit: cover;
     object-position: center;
