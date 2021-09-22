@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // mengambil background yg sudah di atur sebelumnya
     if (getLastWallpaper() != null || getLastWallpaper() != undefined) {
-        container.style.BackgroundImage = `url(${getLastWallpaper()})`
+        container.style.backgroundImage = `url(${getLastWallpaper()})`
     }
 
 
