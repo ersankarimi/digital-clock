@@ -13,13 +13,14 @@ const displayQuotes = container.querySelector(".quote");
 // more button variabel
 const moreButton = container.querySelector("#more-btn");
 
+// skip wallpaper button
+const skipWallpaperBtn = container.querySelector("#random-wallpaper");
+
 // popover button
 const popoverBottom = container.querySelector("#popover");
 moreButton.addEventListener("click", function () {
     popoverBottom.classList.toggle("hide");
-})
-
-
+});
 
 // get checkbox element variabel
 let checkbox = container.querySelector(".onoffswitch-checkbox");
@@ -101,16 +102,16 @@ function twentyFourClock(clk) {
 
     let min = currentTime.getMinutes();
     if (min < 10) {
-        seconds = "0" + currentTime.getMinutes();
+        min = "0" + currentTime.getMinutes();
     };
 
     let hr = currentTime.getHours();
     if (hr < 10) {
-        hr = "0" + currentTime.getHours;
+        hr = "0" + currentTime.getHours();
     };
     clk = `${hr}:${min}:${seconds}`;
     // clk = `${hr}:${min}`;
-
+    // console.log(typeof (seconds));
     return clk;
 };
 
@@ -121,8 +122,13 @@ function formatAMPM(date) {
     let second = date.getSeconds();
 
     let ampm = hours >= 12 ? "PM" : "AM";
+
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
+    if (hours < 10) {
+        hours = "0" + hours;
+    }; // make 2 digit if hrs < 10
+
     minutes = minutes < 10 ? '0' + minutes : minutes;
     second = second < 10 ? '0' + second : second;
 
@@ -148,3 +154,16 @@ function switchClockFormat() {
         checkStatusClockFormat(el);
     });
 };
+
+// skip wallpaper button
+skipWallpaperBtn.addEventListener("click", e => {
+    try {
+        let x = Math.floor(Math.random() * 44)
+        console.log(x);
+        let script = `./assets/img/wallpaper/${x}.jpg`
+
+        container.style.backgroundImage = `url(${script})`
+    } catch (error) {
+        console.log(error);
+    }
+});

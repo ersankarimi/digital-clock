@@ -1,8 +1,9 @@
 /* My Font */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 @font-face {
   font-family: "digital-7";
-  src: url(font/digital-7.ttf);
+  src: url(/font/digital-7.ttf);
 }
 
 /* End My Font */
@@ -27,19 +28,19 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -ms-flex-line-pack: center;
-      align-content: center;
+  align-content: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-image: url("/img/wallpaper/10.jpg");
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-image: url("../assets/img/wallpaper/14.jpg");
   background-size: cover;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   -o-object-position: center;
-     object-position: center;
+  object-position: center;
   cursor: default;
 }
 
@@ -55,10 +56,10 @@ body {
   display: flex;
   position: relative;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -ms-flex-line-pack: center;
-      align-content: center;
+  align-content: center;
   padding: 1em;
   margin: 1em;
 }
@@ -106,11 +107,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .display-clock .clock {
@@ -132,8 +133,8 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .display-clock .more-btn-primary {
@@ -156,14 +157,14 @@ body {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin: 12px 0;
   padding: 8px;
   background-color: rgba(51, 51, 51, 0.5);
@@ -223,16 +224,16 @@ body {
   transition: all 0.3s ease-in 0s;
 }
 
-.display-clock .onoffswitch-checkbox:checked + .onoffswitch-label {
+.display-clock .onoffswitch-checkbox:checked+.onoffswitch-label {
   background-color: #49E845;
 }
 
-.display-clock .onoffswitch-checkbox:checked + .onoffswitch-label,
-.display-clock .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+.display-clock .onoffswitch-checkbox:checked+.onoffswitch-label,
+.display-clock .onoffswitch-checkbox:checked+.onoffswitch-label:before {
   border-color: #49E845;
 }
 
-.display-clock .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+.display-clock .onoffswitch-checkbox:checked+.onoffswitch-label:before {
   right: 0px;
 }
 
