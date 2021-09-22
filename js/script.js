@@ -13,13 +13,14 @@ const displayQuotes = container.querySelector(".quote");
 // more button variabel
 const moreButton = container.querySelector("#more-btn");
 
+// skip wallpaper button
+const skipWallpaperBtn = container.querySelector("#random-wallpaper");
+
 // popover button
 const popoverBottom = container.querySelector("#popover");
 moreButton.addEventListener("click", function () {
     popoverBottom.classList.toggle("hide");
-})
-
-
+});
 
 // get checkbox element variabel
 let checkbox = container.querySelector(".onoffswitch-checkbox");
@@ -153,3 +154,12 @@ function switchClockFormat() {
         checkStatusClockFormat(el);
     });
 };
+
+// skip wallpaper button
+skipWallpaperBtn.addEventListener("click", e => {
+    let x = Math.floor(Math.random() * 44)
+    console.log(x);
+    let script = `https://ersankarimi.github.io/digital-clock/img/wallpaper/${x}.jpg`
+
+    container.style.backgroundImage = `url(${script})`
+});
