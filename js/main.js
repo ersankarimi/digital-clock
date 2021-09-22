@@ -8,6 +8,10 @@ let nama;
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
 
+    /**
+     * * Ini untuk load value dari local storage.
+     * * Yang di load itu pengaturan yang sudah diset di local storage
+     */
     // pengecekan apakah kita belum mengisi nama apa sudah
     if (named != null || named != undefined) {
         nama = getNameFromLocalStorage();
@@ -19,8 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
         setNameToLocalStorage(namaToLocal);
         nama = getNameFromLocalStorage()
     };
+
+    // mengambil background yg sudah di atur sebelumnya
+    if (getLastWallpaper() != null || getLastWallpaper() != undefined) {
+        container.style.BackgroundImage = `url(${getLastWallpaper()})`
+    }
+
+
     // loadTime(value)
     const repeat = setInterval(function () {
+        if (getLastWallpaper() != null || getLastWallpaper() != undefined) {
+            container.style.backgroundImage = `url(${getLastWallpaper()})`
+        }
         // variabel clock
         let valueLocalStorage = getValueClockFormat();
         console.log(valueLocalStorage);

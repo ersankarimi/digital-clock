@@ -1,6 +1,8 @@
 const cacheKey = "FORMAT";
 const cacheName = "NAME";
+const cacheWallpaper = "WALLPAPER";
 
+// punya clock
 function checkStatusClockFormat(el) {
     if (el == "true") {
         localStorage.setItem(cacheKey, el);
@@ -9,6 +11,11 @@ function checkStatusClockFormat(el) {
     localStorage.setItem(cacheKey, el);
 };
 
+function getValueClockFormat() {
+    return localStorage.getItem(cacheKey);
+};
+
+// punya nama
 function setNameToLocalStorage(val) {
     localStorage.setItem(cacheName, val);
 };
@@ -17,6 +24,11 @@ function getNameFromLocalStorage() {
     return localStorage.getItem(cacheName);
 };
 
-function getValueClockFormat() {
-    return localStorage.getItem(cacheKey);
-};
+// punya wallpaper
+function setCurrentWallpaper(val) {
+    localStorage.setItem(cacheWallpaper, val);
+}
+
+function getLastWallpaper(val) {
+    return localStorage.getItem(cacheWallpaper);
+}
