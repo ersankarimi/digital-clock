@@ -34,7 +34,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-image: url("/assets/img/wallpaper/34.jpg");
+  background-image: url("https://ersankarimi.github.io/digital-clock/assets/img/wallpaper/34.jpg");
   background-size: cover;
   -o-object-fit: cover;
      object-fit: cover;
