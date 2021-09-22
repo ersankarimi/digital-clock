@@ -121,8 +121,13 @@ function formatAMPM(date) {
     let second = date.getSeconds();
 
     let ampm = hours >= 12 ? "PM" : "AM";
+
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
+    if (hours < 10) {
+        hours = "0" + hours;
+    }; // make 2 digit if hrs < 10
+
     minutes = minutes < 10 ? '0' + minutes : minutes;
     second = second < 10 ? '0' + second : second;
 

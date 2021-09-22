@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (valueLocalStorage === "true") {
             let clock = twentyFourClock()
-            // console.log(clock);
             displayClock.innerText = twentyFourClock(clock);
             displaySaying.innerText = sayingdisplay24(clock)
         } else {
