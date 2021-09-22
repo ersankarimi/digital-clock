@@ -101,16 +101,16 @@ function twentyFourClock(clk) {
 
     let min = currentTime.getMinutes();
     if (min < 10) {
-        seconds = "0" + currentTime.getMinutes();
+        min = "0" + currentTime.getMinutes();
     };
 
     let hr = currentTime.getHours();
     if (hr < 10) {
-        hr = "0" + currentTime.getHours;
+        hr = "0" + currentTime.getHours();
     };
     clk = `${hr}:${min}:${seconds}`;
     // clk = `${hr}:${min}`;
-
+    // console.log(typeof (seconds));
     return clk;
 };
 

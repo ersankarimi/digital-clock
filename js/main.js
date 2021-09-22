@@ -7,8 +7,8 @@ let nama;
 
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
-    // pengecekan apakah kita belum mengisi nama apa sudah
 
+    // pengecekan apakah kita belum mengisi nama apa sudah
     if (named != null || named != undefined) {
         nama = getNameFromLocalStorage();
         console.log(named);
