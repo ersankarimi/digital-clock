@@ -159,8 +159,7 @@ function switchClockFormat() {
 skipWallpaperBtn.addEventListener("click", e => {
     let x = Math.floor(Math.random() * 44)
     console.log(x);
-    // let script = `https://ersankarimi.github.io/digital-clock/assets/img/wallpaper/${x}.jpg`
-    let script = `https://ersankarimi.github.io/digital-clock/assets/img/wallpaper/${x}.jpg`
+    let script = `../assets/img/wallpaper/${x}.jpg`
 
     container.style.backgroundImage = `url(${script})`
 });
