@@ -157,9 +157,13 @@ function switchClockFormat() {
 
 // skip wallpaper button
 skipWallpaperBtn.addEventListener("click", e => {
-    let x = Math.floor(Math.random() * 44)
-    console.log(x);
-    let script = `"../assets/img/wallpaper/${x}.jpg"`
+    try {
+        let x = Math.floor(Math.random() * 44)
+        console.log(x);
+        let script = `./assets/img/wallpaper/${x}.jpg`
 
-    container.style.backgroundImage = `url(${script})`
+        container.style.backgroundImage = `url(${script})`
+    } catch (error) {
+        console.log(error);
+    }
 });
