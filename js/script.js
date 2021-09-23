@@ -155,17 +155,21 @@ function switchClockFormat() {
     });
 };
 
+function randomNum() {
+    let x = Math.floor(Math.random() * 43) + 1;
+    return x
+}
+
 // skip wallpaper button
 skipWallpaperBtn.addEventListener("click", e => {
     try {
-        let x = Math.floor(Math.random() * 43) + 1;
-        console.log(x);
-        let script = `./assets/img/wallpaper/${x}.jpg`;
-
+        let script = `./assets/img/wallpaper/${randomNum()}.jpg`;
+        let now = container.style.backgorundImage;
+        container.style.backgroundImage = now;
+        container.style.transition = "all 1s";
+        container.style.backgroundImage = `url(${script})`;
         // set value to local storage
         setCurrentWallpaper(script);
-
-        container.style.backgroundImage = `url(${script})`;
     } catch (error) {
         console.log(error);
     };

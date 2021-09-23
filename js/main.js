@@ -7,6 +7,8 @@ let nama;
 
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
+    // get random number for changes wallpaper
+    randomNum();
 
     /**
      * * Ini untuk load value dari local storage.
@@ -24,17 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
         nama = getNameFromLocalStorage()
     };
 
-    // mengambil background yg sudah di atur sebelumnya
-    if (getLastWallpaper() != null || getLastWallpaper() != undefined) {
+    // mengambil background yg sudah di atur sebelumnya\
+    if (getLastWallpaper() != null) {
         container.style.backgroundImage = `url(${getLastWallpaper()})`
     }
 
 
     // loadTime(value)
     const repeat = setInterval(function () {
-        if (getLastWallpaper() != null || getLastWallpaper() != undefined) {
-            container.style.backgroundImage = `url(${getLastWallpaper()})`
-        }
         // variabel clock
         let valueLocalStorage = getValueClockFormat();
         console.log(valueLocalStorage);
