@@ -22,6 +22,9 @@ moreButton.addEventListener("click", function () {
     popoverBottom.classList.toggle("hide");
 });
 
+// get name from local storage
+const userName = getNameFromLocalStorage();
+
 // get checkbox element variabel
 let checkbox = container.querySelector(".onoffswitch-checkbox");
 
@@ -30,7 +33,7 @@ const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday
 const saying = ["Good morning", "Good afternoon", "Good evening"];
 
 const quotes = {
-    "Sunday": `Take a rest ${nama}!`,
+    "Sunday": `Take a rest ${userName}!`,
     "Monday": `Only you can change your life. Nobody else can do it for you.`,
     "Tuesday": "Success is not final. Failure is not fatal. It is the courage to continue that counts.",
     "Wednesday": "It is better to fail in originality than to succeed in imitation.",
@@ -44,13 +47,13 @@ const quotes = {
 // function saying 24 clock
 function sayingdisplay24(hrs) {
     const clock = parseInt(hrs[0] + hrs[1])
-    let say = nama;
+    let say = userName;
     if (clock >= 0 && clock <= 12) {
-        say = `${saying[0]}, ${nama}.`;
+        say = `${saying[0]}, ${userName}.`;
     } else if (clock > 12 && clock <= 18) {
-        say = `${saying[1]}, ${nama}.`
+        say = `${saying[1]}, ${userName}.`
     } else {
-        say = `${saying[2]}, ${nama}.`
+        say = `${saying[2]}, ${userName}.`
     };
 
     return say;
@@ -59,7 +62,7 @@ function sayingdisplay24(hrs) {
 function sayingdisplay12(hrs) {
     let hours = hrs.getHours()
 
-    let say = nama;
+    let say = userName;
 
     let ampm = hours >= 12 ? "PM" : "AM";
     hours = hours % 12;
@@ -67,13 +70,13 @@ function sayingdisplay12(hrs) {
 
     if (ampm == "AM") {
         if (hours >= 0 && hours <= 12) {
-            say = `${saying[0]}, ${nama}.`;
+            say = `${saying[0]}, ${userName}.`;
         }
     } else {
         if (hours >= 1 && hours <= 6) {
-            say = `${saying[1]}, ${nama}.`
+            say = `${saying[1]}, ${userName}.`
         } else {
-            say = `${saying[2]}, ${nama}.`
+            say = `${saying[2]}, ${userName}.`
         }
     }
     return say;

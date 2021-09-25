@@ -3,7 +3,7 @@
 // variabel to get name on display
 let named = getNameFromLocalStorage();
 // get name for input variabel
-let nama;
+// let nama;
 
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,14 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     // pengecekan apakah kita belum mengisi nama apa sudah
     if (named != null || named != undefined) {
-        nama = getNameFromLocalStorage();
         console.log(named);
+        // nama = getNameFromLocalStorage();
+        // console.log(nama);
     } else {
         // get name for input variabel
         const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
         const namaToLocal = inputNama.charAt(0).toUpperCase() + inputNama.slice(1);
         setNameToLocalStorage(namaToLocal);
-        nama = getNameFromLocalStorage()
+        named = getNameFromLocalStorage();
     };
 
     // mengambil background yg sudah di atur sebelumnya\
