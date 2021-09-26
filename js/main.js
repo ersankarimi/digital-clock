@@ -3,7 +3,6 @@
 // variabel to get name on display
 let named = getNameFromLocalStorage();
 // get name for input variabel
-// let nama;
 
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
