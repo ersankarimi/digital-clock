@@ -32,6 +32,17 @@ let checkbox = container.querySelector(".onoffswitch-checkbox");
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const saying = ["Good morning", "Good afternoon", "Good evening"];
 
+const sayingTwo = {
+    "sunday" : {
+        "morning" : [`Good morning ${userName}.`, `Enjoy your weekend ${userName}.`, `It's weekends, do domething ${userName}.`, `Gather Your Strength ${userName}.`],
+        "afternoon" : [`Good afternoon ${userName}.`, `Sleep for a while ${userName}.`, `Be grateful ${userName}`],
+        "evening": [`Good evening ${userName}`, `Take a rest ${userName}.`]
+    },
+    "monday": {
+        
+    }
+}
+
 const quotes = {
     "Sunday": `Take a rest ${userName}!`,
     "Monday": `Only you can change your life. Nobody else can do it for you.`,

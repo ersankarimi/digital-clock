@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         named = getNameFromLocalStorage();
     };
 
-    // mengambil background yg sudah di atur sebelumnya\
+    // mengambil background yg sudah di atur sebelumnya
     if (getLastWallpaper() != null) {
         container.style.backgroundImage = `url(${getLastWallpaper()})`
     }
