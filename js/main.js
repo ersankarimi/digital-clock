@@ -1,14 +1,13 @@
 "use strict";
 
-// variabel to get name on display
-let named = getNameFromLocalStorage();
-// get name for input variabel
+
 
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
-    // get random number for changes wallpaper
-    randomNum();
-
+    // variabel to get name on display
+    // get name for input variabel
+    let named = getNameFromLocalStorage();
+    
     /**
      * * Ini untuk load value dari local storage.
      * * Yang di load itu pengaturan yang sudah diset di local storage

@@ -197,7 +197,7 @@ function switchClockFormat() {
 };
 
 function randomNum() {
-    let x = Math.floor(Math.random() * 43) + 1;
+    let x = Math.floor(Math.random() * 45) + 1;
     return x
 }
 
@@ -205,12 +205,15 @@ function randomNum() {
 skipWallpaperBtn.addEventListener("click", e => {
     try {
         let script = `./assets/img/wallpaper/${randomNum()}.jpg`;
-        let now = container.style.backgorundImage;
-        container.style.backgroundImage = now;
-        container.style.transition = "all 1s";
-        container.style.backgroundImage = `url(${script})`;
-        // set value to local storage
-        setCurrentWallpaper(script);
+
+        // delay .5s for change wallpaper display
+        const wallpaperDelay = setTimeout(() => {
+            container.style.transition = "all 1.5s";
+            container.style.backgroundImage = `url(${script})`;
+            // set value to local storage
+            setCurrentWallpaper(script);
+        }, 500)
+        
     } catch (error) {
         console.log(error);
     };

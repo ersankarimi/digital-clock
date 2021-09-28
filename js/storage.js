@@ -29,6 +29,6 @@ function setCurrentWallpaper(val) {
     localStorage.setItem(cacheWallpaper, val);
 }
 
-function getLastWallpaper(val) {
+function getLastWallpaper() {
     return localStorage.getItem(cacheWallpaper);
 }
