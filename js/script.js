@@ -35,13 +35,40 @@ const saying = ["Good morning", "Good afternoon", "Good evening"];
 const sayingTwo = {
     "sunday" : {
         "morning" : [`Good morning ${userName}.`, `Enjoy your weekend ${userName}.`, `It's weekends, do domething ${userName}.`, `Gather Your Strength ${userName}.`],
-        "afternoon" : [`Good afternoon ${userName}.`, `Sleep for a while ${userName}.`, `Be grateful ${userName}`],
-        "evening": [`Good evening ${userName}`, `Take a rest ${userName}.`]
+        "afternoon" : [`Good afternoon ${userName}.`, `Sleep for a while ${userName}.`, `Be grateful ${userName}.`],
+        "evening": [`Good evening ${userName}.`, `Take a rest ${userName}.`]
     },
     "monday": {
-        
+        "morning" : [`Good morning ${userName}.`, `Grab your coffee ${userName}.`, `Keep going ${userName}!`, `Be still ${userName}.`],
+        "afternoon": [`Good afternoon ${userName}.`, `Keep it up!`],
+        "evening": [`Good evening ${userName}.`, `Be grateful ${userName}.`]
+    }, 
+    "tuesday": {
+        "morning": [`Good morning ${userName}.`, `Be nice.`, `Never give up.`],
+        "afternoon": [`Good afternoon ${userName}.`, `Just do it!`, `And still, I rise`],
+        "evening": [`Good evening ${userName}.`, `Strive for greatness.`, `Rest and be thankful.`]
+    }, 
+    "wednesday": {
+        "morning": [`Good morning ${userName}.`, `Start doing ${userName}.`, `Love for all.`],
+        "afternoon": [`Good afternoon ${userName}.`, `Strive for greatness.`],
+        "evening": [`Good evening ${userName}.`, `Just rest, it's okay.`]
+    },
+    "thursday": {
+        "morning": [`Good morning ${userName}.`, `You can do it.`, `Be nice.`], 
+        "afternoon": [`Good afternoon ${userName}.`, `Grab your coffee.`],
+        "evening": [`Good evening ${userName}.`, `Sleep well ${userName}.` ]
+    },
+    "friday": {
+        "morning": [`Good morning ${userName}.`, `Prayer changes everything.`, `Be thankful.`],
+        "afternoon": [`Good afternoon ${userName}.`, `Love yourself ${userName}.`],
+        "evening": [`Good evening ${userName}.`, `Sleep well ${userName}.`, `Be greatful.`]
+    },
+    "saturday" : {
+        "morning": [`Good morning ${userName}.`, `Do something ${userName}.`, `Grab your coffee.`],
+        "afternoon": [`Good afternoon ${userName}.`, `Take a nap.`],
+        "evening": [`Good evening ${userName}`, `Sleep well.`, `It's okey, just rest!`]
     }
-}
+};
 
 const quotes = {
     "Sunday": `Take a rest ${userName}!`,
