@@ -23,7 +23,7 @@ moreButton.addEventListener("click", function () {
 });
 
 // get name from local storage
-const userName = getNameFromLocalStorage();
+// const userName = getNameFromLocalStorage();
 
 // get checkbox element variabel
 let checkbox = container.querySelector(".onoffswitch-checkbox");
@@ -34,44 +34,44 @@ const saying = ["Good morning", "Good afternoon", "Good evening"];
 
 const sayingTwo = {
     "sunday" : {
-        "morning" : [`Good morning ${userName}.`, `Enjoy your weekend ${userName}.`, `It's weekends, do domething ${userName}.`, `Gather Your Strength ${userName}.`],
-        "afternoon" : [`Good afternoon ${userName}.`, `Sleep for a while ${userName}.`, `Be grateful ${userName}.`],
-        "evening": [`Good evening ${userName}.`, `Take a rest ${userName}.`]
+        "morning" : [`Good morning ${getNameFromLocalStorage()}.`, `Enjoy your weekend ${getNameFromLocalStorage()}.`, `It's weekends, do domething ${getNameFromLocalStorage()}.`, `Gather Your Strength ${getNameFromLocalStorage()}.`],
+        "afternoon" : [`Good afternoon ${getNameFromLocalStorage()}.`, `Sleep for a while ${getNameFromLocalStorage()}.`, `Be grateful ${getNameFromLocalStorage()}.`],
+        "evening": [`Good evening ${getNameFromLocalStorage()}.`, `Take a rest ${getNameFromLocalStorage()}.`]
     },
     "monday": {
-        "morning" : [`Good morning ${userName}.`, `Grab your coffee ${userName}.`, `Keep going ${userName}!`, `Be still ${userName}.`],
-        "afternoon": [`Good afternoon ${userName}.`, `Keep it up!`],
-        "evening": [`Good evening ${userName}.`, `Be grateful ${userName}.`]
+        "morning" : [`Good morning ${getNameFromLocalStorage()}.`, `Grab your coffee ${getNameFromLocalStorage()}.`, `Keep going ${getNameFromLocalStorage()}!`, `Be still ${getNameFromLocalStorage()}.`],
+        "afternoon": [`Good afternoon ${getNameFromLocalStorage()}.`, `Keep it up!`],
+        "evening": [`Good evening ${getNameFromLocalStorage()}.`, `Be grateful ${getNameFromLocalStorage()}.`]
     }, 
     "tuesday": {
-        "morning": [`Good morning ${userName}.`, `Be nice.`, `Never give up.`],
-        "afternoon": [`Good afternoon ${userName}.`, `Just do it!`, `And still, I rise`],
-        "evening": [`Good evening ${userName}.`, `Strive for greatness.`, `Rest and be thankful.`]
+        "morning": [`Good morning ${getNameFromLocalStorage()}.`, `Be nice.`, `Never give up.`],
+        "afternoon": [`Good afternoon ${getNameFromLocalStorage()}.`, `Just do it!`, `And still, I rise`],
+        "evening": [`Good evening ${getNameFromLocalStorage()}.`, `Strive for greatness.`, `Rest and be thankful.`]
     }, 
     "wednesday": {
-        "morning": [`Good morning ${userName}.`, `Start doing ${userName}.`, `Love for all.`],
-        "afternoon": [`Good afternoon ${userName}.`, `Strive for greatness.`],
-        "evening": [`Good evening ${userName}.`, `Just rest, it's okay.`]
+        "morning": [`Good morning ${getNameFromLocalStorage()}.`, `Start doing ${getNameFromLocalStorage()}.`, `Love for all.`],
+        "afternoon": [`Good afternoon ${getNameFromLocalStorage()}.`, `Strive for greatness.`],
+        "evening": [`Good evening ${getNameFromLocalStorage()}.`, `Just rest, it's okay.`]
     },
     "thursday": {
-        "morning": [`Good morning ${userName}.`, `You can do it.`, `Be nice.`], 
-        "afternoon": [`Good afternoon ${userName}.`, `Grab your coffee.`],
-        "evening": [`Good evening ${userName}.`, `Sleep well ${userName}.` ]
+        "morning": [`Good morning ${getNameFromLocalStorage()}.`, `You can do it.`, `Be nice.`], 
+        "afternoon": [`Good afternoon ${getNameFromLocalStorage()}.`, `Grab your coffee.`],
+        "evening": [`Good evening ${getNameFromLocalStorage()}.`, `Sleep well ${getNameFromLocalStorage()}.` ]
     },
     "friday": {
-        "morning": [`Good morning ${userName}.`, `Prayer changes everything.`, `Be thankful.`],
-        "afternoon": [`Good afternoon ${userName}.`, `Love yourself ${userName}.`],
-        "evening": [`Good evening ${userName}.`, `Sleep well ${userName}.`, `Be greatful.`]
+        "morning": [`Good morning ${getNameFromLocalStorage()}.`, `Prayer changes everything.`, `Be thankful.`],
+        "afternoon": [`Good afternoon ${getNameFromLocalStorage()}.`, `Love yourself ${getNameFromLocalStorage()}.`],
+        "evening": [`Good evening ${getNameFromLocalStorage()}.`, `Sleep well ${getNameFromLocalStorage()}.`, `Be greatful.`]
     },
     "saturday" : {
-        "morning": [`Good morning ${userName}.`, `Do something ${userName}.`, `Grab your coffee.`],
-        "afternoon": [`Good afternoon ${userName}.`, `Take a nap.`],
-        "evening": [`Good evening ${userName}`, `Sleep well.`, `It's okey, just rest!`]
+        "morning": [`Good morning ${getNameFromLocalStorage()}.`, `Do something ${getNameFromLocalStorage()}.`, `Grab your coffee.`],
+        "afternoon": [`Good afternoon ${getNameFromLocalStorage()}.`, `Take a nap.`],
+        "evening": [`Good evening ${getNameFromLocalStorage()}`, `Sleep well.`, `It's okey, just rest!`]
     }
 };
 
 const quotes = {
-    "Sunday": `Take a rest ${userName}!`,
+    "Sunday": `Take a rest ${getNameFromLocalStorage()}!`,
     "Monday": `Only you can change your life. Nobody else can do it for you.`,
     "Tuesday": "Success is not final. Failure is not fatal. It is the courage to continue that counts.",
     "Wednesday": "It is better to fail in originality than to succeed in imitation.",
@@ -85,13 +85,13 @@ const quotes = {
 // function saying 24 clock
 function sayingdisplay24(hrs) {
     const clock = parseInt(hrs[0] + hrs[1])
-    let say = userName;
+    let say;
     if (clock >= 0 && clock <= 12) {
-        say = `${saying[0]}, ${userName}.`;
+        say = `${saying[0]}, ${getNameFromLocalStorage()}.`;
     } else if (clock > 12 && clock <= 18) {
-        say = `${saying[1]}, ${userName}.`
+        say = `${saying[1]}, ${getNameFromLocalStorage()}.`
     } else {
-        say = `${saying[2]}, ${userName}.`
+        say = `${saying[2]}, ${getNameFromLocalStorage()}.`
     };
 
     return say;
@@ -99,8 +99,7 @@ function sayingdisplay24(hrs) {
 // function saying 12 clock
 function sayingdisplay12(hrs) {
     let hours = hrs.getHours()
-
-    let say = userName;
+    let say;
 
     let ampm = hours >= 12 ? "PM" : "AM";
     hours = hours % 12;
@@ -108,13 +107,13 @@ function sayingdisplay12(hrs) {
 
     if (ampm == "AM") {
         if (hours >= 0 && hours <= 12) {
-            say = `${saying[0]}, ${userName}.`;
+            say = `${saying[0]}, ${getNameFromLocalStorage()}.`;
         }
     } else {
         if (hours >= 1 && hours <= 6) {
-            say = `${saying[1]}, ${userName}.`
+            say = `${saying[1]}, ${getNameFromLocalStorage()}.`
         } else {
-            say = `${saying[2]}, ${userName}.`
+            say = `${saying[2]}, ${getNameFromLocalStorage()}.`
         }
     }
     return say;
@@ -204,15 +203,15 @@ function randomNum() {
 // skip wallpaper button
 skipWallpaperBtn.addEventListener("click", e => {
     try {
+        container.style.backgroundImage = `url(${getLastWallpaper()})`
         let script = `./assets/img/wallpaper/${randomNum()}.jpg`;
-
         // delay .5s for change wallpaper display
         const wallpaperDelay = setTimeout(() => {
-            container.style.transition = "all 1.5s";
+            container.style.transition = "all 1s";
             container.style.backgroundImage = `url(${script})`;
             // set value to local storage
             setCurrentWallpaper(script);
-        }, 500)
+        }, 550)
         
     } catch (error) {
         console.log(error);
