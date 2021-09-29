@@ -3,6 +3,8 @@
     "editor.cursorBlinking": "expand",
     "window.title": "${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
     "window.zoomLevel": 0.5,
-    "editor.fontFamily": "'cascadia code', 'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.fontWeight": "normal",
     "editor.fontLigatures": true
+    
 }
