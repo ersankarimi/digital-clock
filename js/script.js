@@ -26,7 +26,7 @@ moreButton.addEventListener("click", function () {
 // const userName = getNameFromLocalStorage();
 
 // get checkbox element variabel
-let checkbox = container.querySelector(".onoffswitch-checkbox");
+let checkbox = container.querySelector(".onoffswitch-clockformat");
 
 // list text to display on screen varibel
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

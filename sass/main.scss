@@ -129,19 +129,27 @@ body {
     // popover style
     .popover-bottom {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 12px 0;
         padding: 8px;
         background-color: rgba(51, 51, 51, .5);
+
+        .flex-toggle {
+            display: flex;
+        }
     }
 
     .hide {
         opacity: 0;
     }
 
-    .label-clock-format {
+    .flex-toggle {
+        margin: 8px 8px 0 0;
+    }
+
+    .label-clock-format, .label-clock-second  {
         font-size: 1rem;
         margin: 0 16px 0 0;
     }
@@ -202,6 +210,7 @@ body {
     .onoffswitch-checkbox:checked+.onoffswitch-label:before {
         right: 0px;
     }
+    
 
 }
 

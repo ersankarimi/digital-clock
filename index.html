@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <!-- Start Display -->
-        <div class="display">
+        <div class="display"> 
 
             <!-- Start Display day -->
             <p class="day"></p>
@@ -37,12 +37,24 @@
 
                     <!-- Start Popover Button -->
                     <div id="popover" class="popover-bottom hide">
-                        <label for="12clock" class="label-clock-format">24-Hour Clock</label>
-                        <div class="onoffswitch">
-                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+
+                        <!-- 24/12 Clock Toggle -->
+                        <div class="flex-toggle">
+                            <label for="12clock" class="label-clock-format">24-Hour Clock</label>
+                            <div class="onoffswitch">
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox onoffswitch-clockformat" id="myonoffswitch"
                                 tabindex="0" checked>
                             <label class="onoffswitch-label" for="myonoffswitch"></label>
+                            </div>
                         </div>
+                        <!-- End 24/12 Clock Toggle -->
+
+                        <!-- Show Second Toggle -->
+                        <!-- <div class="flex-toggle">
+                            
+                        </div> -->
+                        <!-- End Show Second Toggle -->
+                        
                     </div>
                     <!-- End Popover Button -->
                 </div>

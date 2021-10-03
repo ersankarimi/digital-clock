@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
             displayClock.innerText = formatAMPM(new Date);
             displaySaying.innerText = sayingdisplay12(new Date)
         };
-
+    
         switchClockFormat();
 
         // display day
