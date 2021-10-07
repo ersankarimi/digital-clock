@@ -25,8 +25,11 @@ moreButton.addEventListener("click", function () {
 // get name from local storage
 // const userName = getNameFromLocalStorage();
 
-// get checkbox element variabel
-let checkbox = container.querySelector(".onoffswitch-clockformat");
+// get checkbox for clock format element variabel
+let clockFormatToggle = container.querySelector(".onoffswitch-checkbox-clockformat");
+
+// get checkbox for show second element variabel
+let showSecondToggle = container.querySelector(".onoffswitch-checkbox-showsecond");
 
 // list text to display on screen varibel
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -133,6 +136,7 @@ function showDay() {
 // function 24 clock format
 function twentyFourClock(clk) {
     const currentTime = new Date();
+    let showSecondFormat = getShowSecond()
 
     // variabel second , hr , min
     let seconds = currentTime.getSeconds();
@@ -149,14 +153,24 @@ function twentyFourClock(clk) {
     if (hr < 10) {
         hr = "0" + currentTime.getHours();
     };
-    clk = `${hr}:${min}:${seconds}`;
+
+    if (showSecondFormat === "true") {
+        clk = `${hr}:${min}:${seconds}`;
+        return clk;
+    } else {
+        clk = `${hr}:${min}`;
+        return clk;
+    }
     // clk = `${hr}:${min}`;
     // console.log(typeof (seconds));
-    return clk;
 };
 
 // function 12 clock format
 function formatAMPM(date) {
+    // get show second from local storage
+    let showSecondFormat = getShowSecond();
+
+    // set hr , min, and second
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let second = date.getSeconds();
@@ -172,16 +186,20 @@ function formatAMPM(date) {
     minutes = minutes < 10 ? '0' + minutes : minutes;
     second = second < 10 ? '0' + second : second;
 
-    let strTime = `${hours}:${minutes}:${second}`;
-    // let strTime = `${hours}:${minutes}`;
-
-    return strTime;
+    if (showSecondFormat === "true") {
+        let strTime = `${hours}:${minutes}:${second}`;
+        return strTime;
+    } else {
+        // let strTime = `${hours}:${minutes}:${second}`;
+        let strTime = `${hours}:${minutes}`;
+        return strTime;
+    }
 };
 
 // function switch to 12 clock format
 function switchClockFormat() {
-    checkbox.addEventListener("click", e => {
-        if (checkbox.checked == true) {
+    clockFormatToggle.addEventListener("click", e => {
+        if (clockFormatToggle.checked == true) {
             let clock = twentyFourClock()
             displayClock.innerText = twentyFourClock(clock);
             displaySaying.innerText = sayingdisplay24(clock)
@@ -190,17 +208,24 @@ function switchClockFormat() {
             displaySaying.innerText = sayingdisplay12(new Date)
         };
 
-        let el = checkbox.checked.toString()
+        let el = clockFormatToggle.checked.toString()
         checkStatusClockFormat(el);
     });
 };
 
+function switchShowSecond() {
+    showSecondToggle.addEventListener("click", e => {
+        setShowSecond(showSecondToggle.checked.toString());
+    });
+};
+
+// function to get random number
 function randomNum() {
     let x = Math.floor(Math.random() * 45) + 1;
     return x
 }
 
-// skip wallpaper button
+// function for skip wallpaper button
 skipWallpaperBtn.addEventListener("click", e => {
     try {
         container.style.backgroundImage = `url(${getLastWallpaper()})`
@@ -217,3 +242,19 @@ skipWallpaperBtn.addEventListener("click", e => {
         console.log(error);
     };
 });
+
+// function to check second and clock format from local storage
+// if true so give attribute checked in checkbox element
+function giveCheckedAttribute(param1, param2) {
+    if (param1 == "true") {
+        container.querySelector("#myonoffswitch-clockformat").checked = true;
+    } else {
+        container.querySelector("#myonoffswitch-clockformat").checked = false;
+    };
+
+    if (param2 == "true") {
+        container.querySelector("#myonoffswitch-showsecond").checked = true;
+    } else {
+        container.querySelector("#myonoffswitch-showsecond").checked = false;
+    }
+};

@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const repeat = setInterval(function () {
         // variabel clock
         let valueLocalStorage = getValueClockFormat();
+
+        // already checked or not for toggle in more button
+        giveCheckedAttribute(valueLocalStorage, getShowSecond());
         console.log(valueLocalStorage);
 
         if (valueLocalStorage === "true" || valueLocalStorage === null) {
@@ -45,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     
         switchClockFormat();
+        switchShowSecond();
 
         // display day
         displayDay.innerText = showDay();

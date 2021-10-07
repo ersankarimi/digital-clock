@@ -6,6 +6,8 @@
 }
 
 /* End My Font */
+/* Mixin */
+/* End Mixin */
 /* My CSS */
 :root {
   font-size: 16px;
@@ -190,19 +192,22 @@ body {
   margin: 0 16px 0 0;
 }
 
-.display-clock .onoffswitch {
+.display-clock .onoffswitch-clockformat {
   position: relative;
   width: 40px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   margin: 0 0 0 16px;
 }
 
-.display-clock .onoffswitch-checkbox {
+.display-clock .onoffswitch-checkbox-clockformat {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.display-clock .onoffswitch-label {
+.display-clock .onoffswitch-label-clockformat {
   display: block;
   overflow: hidden;
   cursor: pointer;
@@ -216,7 +221,7 @@ body {
   transition: background-color 0.3s ease-in;
 }
 
-.display-clock .onoffswitch-label:before {
+.display-clock .onoffswitch-label-clockformat:before {
   content: "";
   display: block;
   width: 16px;
@@ -232,16 +237,72 @@ body {
   transition: all 0.3s ease-in 0s;
 }
 
-.display-clock .onoffswitch-checkbox:checked + .onoffswitch-label {
+.display-clock .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat {
   background-color: #49E845;
 }
 
-.display-clock .onoffswitch-checkbox:checked + .onoffswitch-label,
-.display-clock .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+.display-clock .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat, .display-clock .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat:before {
   border-color: #49E845;
 }
 
-.display-clock .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+.display-clock .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat:before {
+  right: 0px;
+}
+
+.display-clock .onoffswitch-showsecond {
+  position: relative;
+  width: 40px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  margin: 0 0 0 16px;
+}
+
+.display-clock .onoffswitch-checkbox-showsecond {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.display-clock .onoffswitch-label-showsecond {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 16px;
+  padding: 0;
+  line-height: 16px;
+  border: 2px solid #E3E3E3;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 0.3s ease-in;
+  transition: background-color 0.3s ease-in;
+}
+
+.display-clock .onoffswitch-label-showsecond:before {
+  content: "";
+  display: block;
+  width: 16px;
+  margin: 0px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 22px;
+  border: 2px solid #E3E3E3;
+  border-radius: 16px;
+  -webkit-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+
+.display-clock .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond {
+  background-color: #49E845;
+}
+
+.display-clock .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond, .display-clock .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond:before {
+  border-color: #49E845;
+}
+
+.display-clock .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond:before {
   right: 0px;
 }
 
