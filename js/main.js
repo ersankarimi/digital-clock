@@ -1,19 +1,20 @@
 "use strict";
 
-
-
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
-    // variabel to get name on display
+    // get random wallpaper for first time open
+    if (getLastWallpaper() != null) {
+        container.style.backgroundImage = `url(${getLastWallpaper()})`
+    } else {
+        let script = `./assets/img/wallpaper/${randomNum()}.jpg`;
+        container.style.backgroundImage = `url(${script})`;
+        setCurrentWallpaper(script);
+    };
+
     // get name for input variabel
     let named = getNameFromLocalStorage();
-    
-    /**
-     * * Ini untuk load value dari local storage.
-     * * Yang di load itu pengaturan yang sudah diset di local storage
-     */
     // pengecekan apakah kita belum mengisi nama apa sudah
-    if (named != null || named != undefined) {
+    if (named != null) {
         console.log(named);
         // nama = getNameFromLocalStorage();
         // console.log(nama);
@@ -22,22 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
         const namaToLocal = inputNama.charAt(0).toUpperCase() + inputNama.slice(1);
         setNameToLocalStorage(namaToLocal);
-        named = getNameFromLocalStorage();
+        // named = getNameFromLocalStorage();
     };
-
-    // mengambil background yg sudah di atur sebelumnya
-    if (getLastWallpaper() != null) {
-        container.style.backgroundImage = `url(${getLastWallpaper()})`
-    }
-
 
     // loadTime(value)
     const repeat = setInterval(function () {
         // variabel clock
         let valueLocalStorage = getValueClockFormat();
+
+        // already checked or not for toggle in more button
+        giveCheckedAttribute(valueLocalStorage, getShowSecond());
         console.log(valueLocalStorage);
 
-        if (valueLocalStorage === "true") {
+        if (valueLocalStorage === "true" || valueLocalStorage === null) {
+            localStorage.setItem(cacheKey, "true")
             let clock = twentyFourClock()
             displayClock.innerText = twentyFourClock(clock);
             displaySaying.innerText = sayingdisplay24(clock)
@@ -45,8 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
             displayClock.innerText = formatAMPM(new Date);
             displaySaying.innerText = sayingdisplay12(new Date)
         };
-
+    
         switchClockFormat();
+        switchShowSecond();
 
         // display day
         displayDay.innerText = showDay();
