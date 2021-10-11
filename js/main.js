@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 // variabel dan function untuk update
 document.addEventListener("DOMContentLoaded", () => {
     // get random wallpaper for first time open

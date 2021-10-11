@@ -221,7 +221,7 @@ function switchShowSecond() {
 
 // function to get random number
 function randomNum() {
-    let x = Math.floor(Math.random() * 45) + 1;
+    let x = Math.floor(Math.random() * 63) + 1;
     return x
 }
 
