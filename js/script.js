@@ -108,7 +108,7 @@ function sayingdisplay12(hrs) {
 // function show quotes
 function showQuotes() {
     console.log(getQuotes());
-    return (getQuotes() == null) ? setQuotes( quotes[Math.floor(Math.random() * quotes.length)]) : getQuotes();
+    return (getQuotes() == null) ? setQuotes(quotes[Math.floor(Math.random() * quotes.length)]) : getQuotes();
 };
 
 // function change quotes and set to local storage
