@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // pengecekan apakah kita belum mengisi nama apa sudah
     if (named != null) {
         console.log(named);
-        // nama = getNameFromLocalStorage();
-        // console.log(nama);
     } else {
         // get name for input variabel
         const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
@@ -28,23 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // loadTime(value)
     const repeat = setInterval(function () {
-        // variabel clock
-        let valueLocalStorage = getValueClockFormat();
-
-        // already checked or not for toggle in more button
+        let valueLocalStorage = getValueClockFormat()
+        // already checked or no checked for toggle in more button
         giveCheckedAttribute(valueLocalStorage, getShowSecond());
         console.log(valueLocalStorage);
 
-        if (valueLocalStorage === "true" || valueLocalStorage === null) {
-            localStorage.setItem(cacheKey, "true")
-            let clock = twentyFourClock()
-            displayClock.innerText = twentyFourClock(clock);
-            displaySaying.innerText = sayingdisplay24(clock)
-        } else {
-            displayClock.innerText = formatAMPM(new Date);
-            displaySaying.innerText = sayingdisplay12(new Date)
-        };
-    
         switchClockFormat();
         switchShowSecond();
 
@@ -52,14 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
         displayDay.innerText = showDay();
         let day = displayDay.innerText;
         displayDay.style.fontSize = "3rem";
-        displayDay.style.fontWeight = "500"
+        displayDay.style.fontWeight = "500";
 
         // display clock
-        displayClock.style.fontSize = "10rem"
-        displayClock.style.margin = "0 0 1rem 0"
+        displayClock.innerText = (valueLocalStorage == "true" || valueLocalStorage == null) ? twentyFourClock() : formatAMPM(new Date);
+        displayClock.style.fontSize = "10rem";
+        displayClock.style.margin = "0 0 1rem 0";
 
         // display saying
-        displaySaying.style.fontSize = "4rem"
+        displaySaying.innerText = (getValueClockFormat() == "true") ? sayingdisplay24(twentyFourClock()) : sayingdisplay12(new Date);
+        displaySaying.style.fontSize = "4rem";
 
         // display qoutes
         displayQuotes.innerText = showQuotes(day);
