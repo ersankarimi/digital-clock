@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         displaySaying.style.fontSize = "4rem";
 
         // display qoutes
-        displayQuotes.innerText = showQuotes(day);
+        displayQuotes.innerText = showQuotes();
         displayQuotes.style.margin = "2rem 0 0 0";
         displayQuotes.style.fontSize = "1.5rem";
 
