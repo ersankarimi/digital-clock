@@ -2,6 +2,7 @@ const cacheKey = "FORMAT";
 const cacheName = "NAME";
 const cacheWallpaper = "WALLPAPER";
 const cacheSecond = "SECOND";
+const cacheQuotes = "QUOTES";
 
 // punya clock
 function checkStatusClockFormat(el) {
@@ -42,3 +43,12 @@ function setShowSecond(val) {
 function getShowSecond() {
     return localStorage.getItem(cacheSecond);
 };
+
+// punya qoutes
+function setQuotes(value) {
+    localStorage.setItem(cacheQuotes, value);
+};
+
+function getQuotes() {
+    return localStorage.getItem(cacheQuotes);
+}
