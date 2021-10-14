@@ -87,15 +87,17 @@
             <div class="todo-wrapper">
                 <div class="todo-list-wrapper">
                     <p class="todo-title-left">Today</p>
-                    
                     <div class="todo-caption-middle">
                         <p>Add your TODO list today</p>
                         <button class="btn-new-todo">New TODO</button>
                     </div>
+                    <input type="text" name="new-todo" id="new-todo-input" placeholder="New Todo">
+                    
+                    <!-- Startlist todo dibuat didalam sini -->
 
-                    <input type="text" name="new-todo" id="new-todo" placeholder="New Todo">
+                    <!-- End list todo dibuat didalam sini -->
                 </div>
-                <p class="todo-title-right"><span>TODO</span></p>
+                <p class="todo-title-right"><span id="todo-opened">TODO</span></p>
             </div>
             <!-- End Todo List -->
         </div>
@@ -105,6 +107,7 @@
     <!-- My JS -->
     <script src="js/main.js"></script>
     <script src="js/storage.js"></script>
+    <script src="js/quotes.json"></script>
     <script src="js/script.js"></script>
 
 </body>
