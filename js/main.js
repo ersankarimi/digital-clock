@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // named = getNameFromLocalStorage();
     };
 
+    checkShowTodoList()
+
     // loadTime(value)
     const repeat = setInterval(function () {
         let valueLocalStorage = getValueClockFormat()
@@ -54,5 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
         displayQuotes.style.margin = "2rem 0 0 0";
         displayQuotes.style.fontSize = "1.5rem";
 
+        // function ini untuk menambahkan event ke TODO title
+        // ketika di click akan menampilkan todolist begitu juga sebaliknya
+        SwitchShowTodoList(getTodoOpened())
+
+        // function ini untuk menyembunyikan button new todo ketika di klik
+        hideButtonNewTodo();
     }, 1000);
 })
