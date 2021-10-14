@@ -167,12 +167,13 @@ body {
   background-color: #708a8e;
 }
 
-.display .todo-wrapper .todo-list-wrapper #new-todo {
+.display .todo-wrapper .todo-list-wrapper #new-todo-input {
   padding: 4px;
   color: rgba(255, 255, 255, 0.8);
   caret-color: rgba(255, 255, 255, 0.8);
   background-color: transparent;
   border: transparent;
+  display: none;
 }
 
 .display .todo-wrapper .todo-list-wrapper::after {

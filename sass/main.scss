@@ -251,12 +251,13 @@ body {
                 }
             }
 
-            #new-todo {
+            #new-todo-input {
                 padding : 4px;
                 color: $text-color-white;
                 caret-color: $text-color-white;
                 background-color: transparent;
                 border: transparent;
+                display: none;
             }
         }
 
