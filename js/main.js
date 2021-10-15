@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     checkShowTodoList()
 
+    // function buat kasi tambah todo ke list item todo
+    addTodoListItem();
+
     // loadTime(value)
     const repeat = setInterval(function () {
         let valueLocalStorage = getValueClockFormat()
@@ -62,5 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // function ini untuk menyembunyikan button new todo ketika di klik
         hideButtonNewTodo();
+
+        
     }, 1000);
 })

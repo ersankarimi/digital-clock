@@ -43,6 +43,9 @@ const todoListWrapper = container.querySelector(".todo-list-wrapper");
 // variabel untuk element input new todo
 const newTodoInput = container.querySelector("#new-todo-input");
 
+// variabel seleksi element list-todo (parent dari list-todo-item)
+const listTodoParent = container.querySelector(".list-todo");
+
 // list text to display on screen varibel
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -300,3 +303,43 @@ function hideButtonNewTodo() {
 // function hideTextInputTodoList() {
 //     todoListItem.length === 0 ? newTodoInput.style.display = "none" : newTodoInput.style.display = "block";
 // };
+
+// function untuk trigger new todo input saat tombol enter di klik
+// dia akan membuat todo list baru (jika didalamnya bukan string kosong);
+function addTodoListItem() {
+    newTodoInput.addEventListener("keyup", (e) => {
+        if (e.code === "Enter" && newTodoInput.value.length >= 1) {
+            e.preventDefault();
+            listTodoParent.append(makeTodoList(newTodoInput.value));
+            newTodoInput.value = "";
+        } else if (e.code === "Enter" && newTodoInput.value.length <= 1) {
+            alert("lol")
+            e.preventDefault();
+        }
+    });
+};
+
+// function membuat element todo list
+function makeTodoList(value) {
+    // membuat parent dari todo-list, dan berikan class todo-item
+    const parentTodo = document.createElement("div");
+    parentTodo.classList.add("todo-item");
+
+    // buat checkbox untuk mengecek apakah todo ini sudah selesai
+    // atau belum selesai, dan berikan dia name , id = todo-item
+    const checkboxTodo = document.createElement("input");
+    checkboxTodo.type = "checkbox";
+    checkboxTodo.id = "todo-item";
+    checkboxTodo.name = "todo-item";
+
+    // buat element p untuk mengisi todo list nya hasil dari
+    // inputan pada text input new todo list
+    const typeTodo = document.createElement("p");
+    typeTodo.append(value);
+
+    // menambahkan semua element yang dibuat kedalam parentnya
+    // parent nya itu pada variabel parentTodo
+    parentTodo.appendChild(checkboxTodo);
+    parentTodo.appendChild(typeTodo);
+    return parentTodo;
+}
