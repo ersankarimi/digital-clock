@@ -29,12 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // function buat kasi tambah todo ke list item todo
     addTodoListItem();
 
+    // pengecekan apakah local storage untuk
+    // list item todo list kosong atau engga
+    // kalau kosong maka akan set todo list itemnya
+    // pada local storage itu array kosong
+    updateArrayTodoListItem(getItemTodoList())
+    renderHistoryTodoList()
+
     // loadTime(value)
     const repeat = setInterval(function () {
         let valueLocalStorage = getValueClockFormat()
         // already checked or no checked for toggle in more button
         giveCheckedAttribute(valueLocalStorage, getShowSecond());
-        console.log(valueLocalStorage);
+        // console.log(valueLocalStorage);
 
         switchClockFormat();
         switchShowSecond();
@@ -65,6 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // function ini untuk menyembunyikan button new todo ketika di klik
         hideButtonNewTodo();
+
+        // checkChangesTodoListItem();
 
         
     }, 1000);
