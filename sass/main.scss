@@ -194,6 +194,123 @@ body {
             opacity: 1;
         }
     }
+    // End random icon and quotes style
+
+    // start style todo
+    .todo-wrapper {
+        // variabel
+        $main-color : rgba(0, 0, 0, .6);
+        $text-color-white : rgba(255, 255, 255, .8);
+
+        display: flex;
+        padding: 2rem;
+        flex-direction: column;
+        position: absolute;
+        right: 16px;
+        bottom: 0;
+        
+        .todo-title-left {
+            text-align: left;
+            margin: 0 0 2em 0;
+
+        }
+        .todo-title-right {
+            text-align: right;
+            margin: 1em 0 0 0;
+            
+            span {
+                cursor: pointer;
+                padding: 4px;
+            }
+        }
+
+        .todo-list-wrapper {
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            background-color: $main-color;
+            margin: 0 0 .5em 0;
+
+            .list-todo {
+                text-align: left;
+
+                .todo-item {
+                    margin: 0.25em 0;
+                    position: relative;
+
+                    img {
+                        width: 15px;
+                        height: 15px;
+                        position: absolute;
+                        right: 0;
+                        cursor: pointer;
+                        opacity: 60%;
+                    }
+                }
+                .todo-item-checkbox {
+                    display: flex;
+                    padding: 4px;
+
+                    // #todo-item-checkbox {
+                    //     margin: 0 4px 0 0;
+                    // }
+                }
+
+                #todo-item {
+                    caret-color: $text-color-white;
+                    background-color: transparent;
+                    border: transparent;
+                    color: $text-color-white;
+                }
+
+                #todo-item:focus {
+                    color: darken($color: $text-color-white, $amount: 30%);
+                }
+            }
+            
+            .todo-caption-middle {
+                margin: 3em;
+                color: $text-color-white;
+                .btn-new-todo {
+                    margin: 1em 0 0 0;
+                    width: 75%;
+                    border-radius: 16px;
+                    padding: 8px;
+                    background-color: #8CA1A5;
+                    color: $text-color-white;
+                    border: transparent;
+                }
+
+                .btn-new-todo:hover {
+                    background-color: darken($color: #8ca1a5, $amount: 10%);
+                }
+            }
+
+            #new-todo-input {
+                padding : 4px;
+                margin-top: 1em;
+                color: $text-color-white;
+                caret-color: $text-color-white;
+                background-color: transparent;
+                border: transparent;
+                display: none;
+            }
+        }
+
+        .todo-list-wrapper::after {
+            content: "";
+            width: 0;
+	        height: 0;
+	        border-left: 20px solid transparent;
+	        border-right: 20px solid transparent;
+	        border-top: 16px solid $main-color;
+            position: absolute;
+            right: 38px;
+            bottom: 56px;
+        }
+    }
+    // end style todo
 }
 
 .display-clock {
