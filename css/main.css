@@ -148,15 +148,40 @@ body {
   margin: 0 0 .5em 0;
 }
 
+.display .todo-wrapper .todo-list-wrapper .list-todo {
+  text-align: left;
+}
+
 .display .todo-wrapper .todo-list-wrapper .list-todo .todo-item {
+  margin: 0.25em 0;
+  position: relative;
+}
+
+.display .todo-wrapper .todo-list-wrapper .list-todo .todo-item img {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  opacity: 60%;
+}
+
+.display .todo-wrapper .todo-list-wrapper .list-todo .todo-item-checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 4px;
 }
 
-.display .todo-wrapper .todo-list-wrapper .list-todo .todo-item #todo-item {
-  margin: 0 4px 0 0;
+.display .todo-wrapper .todo-list-wrapper .list-todo #todo-item {
+  caret-color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  border: transparent;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.display .todo-wrapper .todo-list-wrapper .list-todo #todo-item:focus {
+  color: rgba(179, 179, 179, 0.8);
 }
 
 .display .todo-wrapper .todo-list-wrapper .todo-caption-middle {
@@ -180,6 +205,7 @@ body {
 
 .display .todo-wrapper .todo-list-wrapper #new-todo-input {
   padding: 4px;
+  margin-top: 1em;
   color: rgba(255, 255, 255, 0.8);
   caret-color: rgba(255, 255, 255, 0.8);
   background-color: transparent;
