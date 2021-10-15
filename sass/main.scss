@@ -231,8 +231,18 @@ body {
             padding: 1rem;
             background-color: $main-color;
             margin: 0 0 .5em 0;
-            
 
+            .list-todo {
+                .todo-item {
+                    display: flex;
+                    padding: 4px;
+
+                    #todo-item {
+                        margin: 0 4px 0 0;
+                    }
+                }
+            }
+            
             .todo-caption-middle {
                 margin: 3em;
                 color: $text-color-white;

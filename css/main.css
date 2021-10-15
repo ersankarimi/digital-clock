@@ -148,6 +148,17 @@ body {
   margin: 0 0 .5em 0;
 }
 
+.display .todo-wrapper .todo-list-wrapper .list-todo .todo-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 4px;
+}
+
+.display .todo-wrapper .todo-list-wrapper .list-todo .todo-item #todo-item {
+  margin: 0 4px 0 0;
+}
+
 .display .todo-wrapper .todo-list-wrapper .todo-caption-middle {
   margin: 3em;
   color: rgba(255, 255, 255, 0.8);
