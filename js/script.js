@@ -97,6 +97,8 @@ const quotes = ["Someday is not a day of the week.", "Your time is limited, so d
 
 // array untuk menyimpan todo
 let todoListItem = [];
+let todoListItemDone = [];
+let todoListItemDoneUpdate = [];
 
 
 // function rotate quote
@@ -257,7 +259,7 @@ function giveCheckedAttribute(param1, param2) {
 };
 
 // event click pada todo title right
-function SwitchShowTodoList(value){
+function switchShowTodoList(value){
     todoTitleRight.addEventListener("click", () => {
         if (value == "false") {
             setTodoOpened("true")
@@ -295,7 +297,7 @@ function checkShowTodoList() {
     };
 };
 
-// function hide todo button when click and move cursor to etxt input
+// function hide todo button when click and then move cursor to text input
 function hideButtonNewTodo() {
     buttonNewTodo.addEventListener("click", () => {
         buttonNewTodo.style.display = "none";
@@ -313,13 +315,6 @@ function hideCaptionMiddle(value) {
         newTodoInput.style.display = "block"
     };
 };
-
-// function untuk set text input new todo
-// jika balum membuat todolist sama sekali (0 panjang array todolist (pada variabel todoListItem))
-// maka akan hide dia (kecuali tombol new todo di clik)
-// function hideTextInputTodoList() {
-//     todoListItem.length === 0 ? newTodoInput.style.display = "none" : newTodoInput.style.display = "block";
-// };
 
 // function untuk trigger new todo input saat tombol enter di klik
 // dia akan membuat todo list baru (jika didalamnya bukan string kosong);
@@ -354,6 +349,12 @@ function makeTodoList(value) {
     checkboxTodo.type = "checkbox";
     checkboxTodo.id = "todo-item-checkbox";
     checkboxTodo.name = "todo-item-checkbox";
+    checkboxTodo.addEventListener("click", function () {
+        checkboxTodo.checked == true ? todoListDoneEffect(this.parentElement, true) : todoListDoneEffect(this.parentElement, false);
+    });
+    todoListItemDone.push(checkboxTodo.checked);
+    setItemTodoListDone(JSON.stringify(todoListItemDone));
+
 
     // buat element p untuk mengisi todo list nya hasil dari
     // inputan pada text input new todo list
@@ -387,18 +388,21 @@ function addTodoListToLocalStorage(value) {
 };
 
 // update array todoListItem
-function updateArrayTodoListItem(value) {
-    if (value == null) {;
+function updateArrayTodoListItem(value1, value2) {
+    if (value1 == null && value2 == null) {;
         todoListItem = []
+        todoListItemDone = []
         setItemTodoList(JSON.stringify(todoListItem));
+        setItemTodoListDone(JSON.stringify(todoListItemDone));
     } else {
-        todoListItem = JSON.parse(value);
+        todoListItem = JSON.parse(value1);
+        todoListItemDoneUpdate = JSON.parse(value2);
         console.log(todoListItem);
-        console.log(todoListItem.length);
+        console.log(todoListItemDoneUpdate);
     };
 
-    hideCaptionMiddle(todoListItem.length)
-    return todoListItem;
+    hideCaptionMiddle(todoListItem.length);
+    return todoListItem, todoListItemDoneUpdate;
 };
 
 // update todo list sebelumnya jika sudah punya
@@ -406,18 +410,43 @@ function updateArrayTodoListItem(value) {
 function renderHistoryTodoList() {
     // console.log(todoListItem + "lol");
     if (todoListItem.length > 0) {
-        for (const item of todoListItem) {
-            listTodoParent.append(makeTodoList(item));
-        };
+        // for (const item of todoListItem) {
+        //     listTodoParent.append(makeTodoList(item));
+        // };
+        for (let i = 0 ; i < todoListItem.length ; i++) {
+            listTodoParent.append(makeTodoList(todoListItem[i]))
+            if (todoListItemDoneUpdate[i] == true) {
+                todoListItemDone.splice(i, 1, true)
+                continue
+            }
+            todoListItemDone.splice(i, 1, false)
+            continue
+        }
+        console.log(todoListItemDone);
+        setItemTodoListDone(JSON.stringify(todoListItemDone));
+        return todoListItemDone;
     };
 };
+
+function giveCheckCheckbox() {
+    const cekbok = document.querySelectorAll("[name=todo-item-checkbox]")
+    cekbok.forEach((element, i) => {
+        let todo = element.parentElement.querySelector("#todo-item");
+        if (todoListItemDone[i] == true) {
+            element.parentElement.querySelector("input").checked = true;
+            todoListDoneEffect(element.parentElement, true);
+            console.log(element.parentElement, " ", i);
+            console.log(todo);
+        };
+    });
+}
 
 // untuk mendetiksi perubahan pada todo list
 function checkChangesTodoListItem() {
     let beforeValue = this.value;
     this.addEventListener("change", function () {
         todoListItem.splice(todoListItem.indexOf(beforeValue), 1, this.value);
-        setItemTodoList(JSON.stringify(todoListItem))
+        setItemTodoList(JSON.stringify(todoListItem));
         console.log(todoListItem);
     });
 };
@@ -428,17 +457,29 @@ function deleteTodoList() {
     this.parentElement.remove();
     if (todoListItem.length <= 0) {
         todoCaptionMiddle.style.display = "block";
-    }
+    };
 };
 
 // setelah dihapus update local storage
 function updateLocalStorage(parent) {
-    // let value = listTodoParent.querySelector("#todo-item").value;
     let value = parent.querySelector("#todo-item").value;
-    // console.log(value);
-    // console.log(todoListItem);
-    // console.log(todoListItem.indexOf(value));
-    todoListItem.splice(todoListItem.indexOf(value),1)
+    let i = todoListItem.indexOf(value);
+    console.log(i);
+    todoListItem.splice(todoListItem.indexOf(value),1);
+    todoListItemDone.splice(i,1);
+    console.log(todoListItemDone);
+    return setItemTodoList(JSON.stringify(todoListItem)), setItemTodoListDone(JSON.stringify(todoListItemDone));
+};
 
-    return setItemTodoList(JSON.stringify(todoListItem));
+// function saat kita menceklis todo list maka akan tercoret
+function todoListDoneEffect(parent, ket){
+    // untuk merubah element nya
+    let element = parent.querySelector("#todo-item");
+    ket == true ? (element.style.textDecoration = "line-through", element.style.color = "rgba(255, 255, 255, .3)") : (element.style.textDecoration = "none", element.style.color = "rgba(255, 255, 255, .8)");
+
+    // untuk ganti keterangan baru nya dalam array todoListItemDone
+    todoListItemDone.splice(todoListItem.indexOf(element.value), 1, ket)
+    setItemTodoListDone(JSON.stringify(todoListItemDone));
+    console.log(todoListItemDone);
+    return todoListItemDone;
 };
