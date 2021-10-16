@@ -33,8 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // list item todo list kosong atau engga
     // kalau kosong maka akan set todo list itemnya
     // pada local storage itu array kosong
-    updateArrayTodoListItem(getItemTodoList())
+    updateArrayTodoListItem(getItemTodoList(), getItemTodoListDone())
     renderHistoryTodoList()
+    giveCheckCheckbox()
 
     // loadTime(value)
     const repeat = setInterval(function () {
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // function ini untuk menambahkan event ke TODO title
         // ketika di click akan menampilkan todolist begitu juga sebaliknya
-        SwitchShowTodoList(getTodoOpened())
+        switchShowTodoList(getTodoOpened())
 
         // function ini untuk menyembunyikan button new todo ketika di klik
         hideButtonNewTodo();

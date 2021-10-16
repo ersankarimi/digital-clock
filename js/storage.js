@@ -6,6 +6,7 @@ const cacheQuotes = "QUOTES";
 const cacheTodoAlready = "TODO_ALREADY";
 const cacheTodoOpened = "TODO_OPENED";
 const cacheItemTodoList = "TODO_LIST_ITEM";
+const cacheItemTodoListDone = "TODO_LIST_ITEM_DONE";
 
 // punya clock
 function checkStatusClockFormat(el) {
@@ -77,4 +78,13 @@ function setItemTodoList(value) {
 
 function getItemTodoList() {
     return localStorage.getItem(cacheItemTodoList);
+};
+
+// punya list item todo-list (checked or not?)
+function setItemTodoListDone(value) {
+    localStorage.setItem(cacheItemTodoListDone, value);
+};
+
+function getItemTodoListDone() {
+    return localStorage.getItem(cacheItemTodoListDone);
 };
