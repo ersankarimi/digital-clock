@@ -307,7 +307,8 @@ body {
   margin: 8px 8px 0 0;
 }
 
-.display-clock .label-clock-format, .display-clock .label-clock-second {
+.display-clock .label-clock-format,
+.display-clock .label-clock-second {
   font-size: 1rem;
   margin: 0 16px 0 0;
 }
@@ -361,7 +362,8 @@ body {
   background-color: #49E845;
 }
 
-.display-clock .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat, .display-clock .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat:before {
+.display-clock .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat,
+.display-clock .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat:before {
   border-color: #49E845;
 }
 
@@ -418,7 +420,8 @@ body {
   background-color: #49E845;
 }
 
-.display-clock .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond, .display-clock .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond:before {
+.display-clock .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond,
+.display-clock .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond:before {
   border-color: #49E845;
 }
 

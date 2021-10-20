@@ -11,105 +11,122 @@
 // mixin
 @mixin toggleClockFormat {
     .onoffswitch-clockformat {
-        position: relative; 
+        position: relative;
         width: 40px;
-        -webkit-user-select:none; 
-        -moz-user-select:none; 
+        -webkit-user-select: none;
+        -moz-user-select: none;
         -ms-user-select: none;
         margin: 0 0 0 16px;
     }
+
     .onoffswitch-checkbox-clockformat {
         position: absolute;
         opacity: 0;
         pointer-events: none;
+        // width: 18px;
+        // height: 20px;
     }
+
     .onoffswitch-label-clockformat {
-        display: block; 
-        overflow: hidden; 
+        display: block;
+        overflow: hidden;
         cursor: pointer;
-        height: 16px; 
-        padding: 0; 
+        height: 16px;
+        padding: 0;
         line-height: 16px;
-        border: 2px solid #E3E3E3; 
+        border: 2px solid #E3E3E3;
         border-radius: 16px;
         background-color: #FFFFFF;
         transition: background-color 0.3s ease-in;
     }
+
     .onoffswitch-label-clockformat:before {
         content: "";
-        display: block; 
-        width: 16px; 
+        display: block;
+        width: 16px;
         margin: 0px;
         background: #FFFFFF;
-        position: absolute; 
-        top: 0; 
+        position: absolute;
+        top: 0;
         bottom: 0;
         right: 22px;
-        border: 2px solid #E3E3E3; 
+        border: 2px solid #E3E3E3;
         border-radius: 16px;
-        transition: all 0.3s ease-in 0s; 
+        transition: all 0.3s ease-in 0s;
     }
-    .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat {
+
+    .onoffswitch-checkbox-clockformat:checked+.onoffswitch-label-clockformat {
         background-color: #49E845;
     }
-    .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat, .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat:before {
+
+    .onoffswitch-checkbox-clockformat:checked+.onoffswitch-label-clockformat,
+    .onoffswitch-checkbox-clockformat:checked+.onoffswitch-label-clockformat:before {
         border-color: #49E845;
     }
-    .onoffswitch-checkbox-clockformat:checked + .onoffswitch-label-clockformat:before {
-        right: 0px; 
+
+    .onoffswitch-checkbox-clockformat:checked+.onoffswitch-label-clockformat:before {
+        right: 0px;
     }
 }
 
 @mixin toggleShowSecond {
     .onoffswitch-showsecond {
-        position: relative; 
+        position: relative;
         width: 40px;
-        -webkit-user-select:none; 
-        -moz-user-select:none; 
+        -webkit-user-select: none;
+        -moz-user-select: none;
         -ms-user-select: none;
         margin: 0 0 0 16px;
     }
+
     .onoffswitch-checkbox-showsecond {
         position: absolute;
         opacity: 0;
         pointer-events: none;
     }
+
     .onoffswitch-label-showsecond {
-        display: block; 
-        overflow: hidden; 
+        display: block;
+        overflow: hidden;
         cursor: pointer;
-        height: 16px; 
-        padding: 0; 
+        height: 16px;
+        padding: 0;
         line-height: 16px;
-        border: 2px solid #E3E3E3; 
+        border: 2px solid #E3E3E3;
         border-radius: 16px;
         background-color: #FFFFFF;
         transition: background-color 0.3s ease-in;
     }
+
     .onoffswitch-label-showsecond:before {
         content: "";
-        display: block; 
-        width: 16px; 
+        display: block;
+        width: 16px;
         margin: 0px;
         background: #FFFFFF;
-        position: absolute; 
-        top: 0; 
+        position: absolute;
+        top: 0;
         bottom: 0;
         right: 22px;
-        border: 2px solid #E3E3E3; 
+        border: 2px solid #E3E3E3;
         border-radius: 16px;
-        transition: all 0.3s ease-in 0s; 
+        transition: all 0.3s ease-in 0s;
     }
-    .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond {
+
+    .onoffswitch-checkbox-showsecond:checked+.onoffswitch-label-showsecond {
         background-color: #49E845;
     }
-    .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond, .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond:before {
+
+    .onoffswitch-checkbox-showsecond:checked+.onoffswitch-label-showsecond,
+    .onoffswitch-checkbox-showsecond:checked+.onoffswitch-label-showsecond:before {
         border-color: #49E845;
     }
-    .onoffswitch-checkbox-showsecond:checked + .onoffswitch-label-showsecond:before {
-        right: 0px; 
+
+    .onoffswitch-checkbox-showsecond:checked+.onoffswitch-label-showsecond:before {
+        right: 0px;
     }
 }
+
 /* End Mixin */
 
 
@@ -194,13 +211,14 @@ body {
             opacity: 1;
         }
     }
+
     // End random icon and quotes style
 
     // start style todo
     .todo-wrapper {
         // variabel
-        $main-color : rgba(0, 0, 0, .6);
-        $text-color-white : rgba(255, 255, 255, .8);
+        $main-color: rgba(0, 0, 0, .6);
+        $text-color-white: rgba(255, 255, 255, .8);
 
         display: flex;
         padding: 2rem;
@@ -208,16 +226,17 @@ body {
         position: absolute;
         right: 16px;
         bottom: 0;
-        
+
         .todo-title-left {
             text-align: left;
             margin: 0 0 2em 0;
 
         }
+
         .todo-title-right {
             text-align: right;
             margin: 1em 0 0 0;
-            
+
             span {
                 cursor: pointer;
                 padding: 4px;
@@ -248,6 +267,7 @@ body {
                         opacity: 60%;
                     }
                 }
+
                 .todo-item-checkbox {
                     display: flex;
                     padding: 4px;
@@ -268,10 +288,11 @@ body {
                     color: darken($color: $text-color-white, $amount: 30%);
                 }
             }
-            
+
             .todo-caption-middle {
                 margin: 3em;
                 color: $text-color-white;
+
                 .btn-new-todo {
                     margin: 1em 0 0 0;
                     width: 75%;
@@ -288,7 +309,7 @@ body {
             }
 
             #new-todo-input {
-                padding : 4px;
+                padding: 4px;
                 margin-top: 1em;
                 color: $text-color-white;
                 caret-color: $text-color-white;
@@ -301,15 +322,16 @@ body {
         .todo-list-wrapper::after {
             content: "";
             width: 0;
-	        height: 0;
-	        border-left: 20px solid transparent;
-	        border-right: 20px solid transparent;
-	        border-top: 16px solid $main-color;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 16px solid $main-color;
             position: absolute;
             right: 38px;
             bottom: 56px;
         }
     }
+
     // end style todo
 }
 
@@ -373,14 +395,15 @@ body {
         margin: 8px 8px 0 0;
     }
 
-    .label-clock-format, .label-clock-second  {
+    .label-clock-format,
+    .label-clock-second {
         font-size: 1rem;
         margin: 0 16px 0 0;
     }
 
     @include toggleClockFormat();
     @include toggleShowSecond();
-    
+
 }
 
 .display-clock:hover .more-btn-primary {
