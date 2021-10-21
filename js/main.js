@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // displaySaying
     const displaySaying = container.querySelector(".saying");
 
+    // display quotes
+    const displayQuotes = container.querySelector(".quote");
+
     // ======================================================
 
     // VARIABLE INSTANCE OBJECT
@@ -43,6 +46,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // give checked attribute for more setting display clock
     const checkedAttributeMoreSettingClock = UiInteraction.giveCheckedAttributeMoreSettingClock(getClockFormat24LocalStorage(), getShowSecondFromLocalStorage());
 
+    // quotes for display
+    const quotesDisplay = new QuotesForDisplay().setMargin("2rem 0 0 0").setFontSize("2rem").setQuotesForDisplay();
+
+    // changes quotes display
+    const changesQuotesDisplay = UiInteraction.changesQuotesDisplay();
+
+    // show background display
+    const backgroundDisplay = new BackgroundDisplay().setBackgroundDisplay();
+
+    // changes background display
+    const changesBackgroundDisplay = UiInteraction.changesBackgroundDisplay();
+
+
     // updating state every one second
     const repeat = setInterval(() => {
         saying.setSayingForDisplay(new Date, day.currentDay)
@@ -59,6 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // saying display
         displaySaying.innerText = saying.getSayingForDisplay();
         displaySaying.style.fontSize = saying.fontSize;
+
+        // display quote
+        displayQuotes.innerText = quotesDisplay.getQuotesForDisplay();
+        displayQuotes.style.fontSize = quotesDisplay.fontSize;
+        displayQuotes.style.margin = quotesDisplay.margin;
 
 
     }, 1000);
