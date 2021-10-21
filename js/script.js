@@ -44,6 +44,33 @@ class UiInteraction {
 
         showsecond === "true" ? document.querySelector("#myonoffswitch-showsecond").checked = true : document.querySelector("#myonoffswitch-showsecond").checked = false;
     };
+
+    static changesQuotesDisplay() {
+        const changesQuoteDisplay = document.querySelector("#random-quotes");
+
+        changesQuoteDisplay.addEventListener("click", () => {
+            setQuotesToLocalStorage(QuotesForDisplay.quotes[Math.floor(Math.random() * QuotesForDisplay.quotes.length)]);
+
+            document.querySelector(".quote").innerText = getQuotesFromLocalStorage();
+        });
+    };
+
+    static changesBackgroundDisplay() {
+        const container = document.querySelector(".container");
+        const changesBackgroundDisplay = container.querySelector("#random-wallpaper");
+
+        changesBackgroundDisplay.addEventListener("click", function () {
+            container.style.backgroundImage = `url(${getBackgroundDisplayFromLocalStorage()})`
+            let script = `./assets/img/wallpaper/${Math.floor(Math.random() * 64) + 1}.jpg`;
+            // delay .5s for change wallpaper display
+            const wallpaperDelay = setTimeout(() => {
+                container.style.transition = "all 1s";
+                container.style.backgroundImage = `url(${script})`;
+                // set value to local storage
+                setBackgroundDisplayToLocalStorage(script);
+            }, 550)
+        })
+    }
 };
 class Clock {
     currentClock(currentTime) {
@@ -193,7 +220,7 @@ class SayingForDisplay {
                     this.rotateSayingText(day, min, "evening"); // evening
         }
         return this;
-    }
+    };
 
     getSayingForDisplay() {
         return this.sayingDisplayText;
@@ -203,5 +230,52 @@ class SayingForDisplay {
         this.fontSize = size;
 
         return this;
-    }
-}
+    };
+};
+
+class QuotesForDisplay {
+    static quotes = ["Someday is not a day of the week.", "Your time is limited, so don't waste it living someone else's life.", "If you are not taking care of your customer, your competitor will.", "Beware of monotony; it's the mother of all the deadly sins.", "Nothing is really work unless you would rather be doing something else.", "Be patient with yourself. Self-growth is tender, it's holy ground. There's no greater investment.", "If you never try , you'll never know.", "Without hustle, talent will only carry you so far.", "Working hard for something we don't care about is called stressed, working hard for something we love is called passion.", "I'd rather regret the things I've done than regret the things I haven't done.", "Monday morning you sure look fine.", "The biggest thrill wasn't in winning on Sunday but in meeting the payroll on Monday.", "Time is what we want most and what we use worst.", "Only you can change your life. Nobody else can do it for you.", "Everyone thinks of changing the world, but no one thinks of changing himself.", "Don’t stop when you are tired. Stop when you are done.", "Happiness is not something ready made. It comes from your own actions.", "You can either experience the pain of discipline or the pain of regret. The choice is yours.", "Words can inspire, thoughts can provoke, but only action truly brings you closer to your dreams.", "Do something today that your future self will thank you for.", "Success is not final. Failure is not fatal. It is the courage to continue that counts.", "Be strong enough to let go and wise enough to wait for what you deserve.", "Live as if you were to die tomorrow. Learn as if you were to live forever.", "When the pain of an obstacle is too great, challenge yourself to be stronger.", "The difference between who you are and who you want to be is what you do.", "Success is going from failure to failure without losing your enthusiasm.", "Stop being afraid of what can go wrong and start being positive about what can go right.", "It is better to fail in originality than to succeed in imitation.", "Your mind is powerful. When you fill it with positive thoughts your whole world will change.", "You were born to win, but to be a winner, you must plan to win, prepare to win, and expect to win.", "A negative mind will never give you a positive life.", "Time is what we want most and what we use worst.", "Better three hours too soon than a minute too late.", "Everyone thinks of changing the world, but no one thinks of changing himself.", "The simple act of paying attention can take you a long way.", "Happiness is not something ready made. It comes from your own actions.", "You can either experience the pain of discipline or the pain of regret. The choice is yours.", "Do something today that your future self will thank you for.", "Be strong enough to let go and wise enough to wait for what you deserve.", "When the pain of an obstacle is too great, challenge yourself to be stronger.", "Be the change that you wish to see in the world.", "I never dreamed about success. I worked for it.", "Don’t be afraid to give up the good to go for the great.", "The difference between who you are and who you want to be is what you do.", "Never stop learning because life never stops teaching.", "Stop dreaming, and start doing.", "If you never try , you'll never know.", "The more you learn, the more you earn.", "Experience is a hard teacher because she gives the test first, the lesson afterwards."];
+
+    setQuotesForDisplay() {
+        getQuotesFromLocalStorage() === null ? setQuotesToLocalStorage(QuotesForDisplay.quotes[Math.floor(Math.random() * QuotesForDisplay.quotes.length)]) :
+            this.getQuotesForDisplay();
+
+        return this;
+    };
+
+    getQuotesForDisplay() {
+        return getQuotesFromLocalStorage();
+    };
+
+    setMargin(margin) {
+        this.margin = margin;
+
+        return this;
+    };
+
+    setFontSize(size) {
+        this.fontSize = size;
+
+        return this;
+    };
+};
+
+class BackgroundDisplay {
+    setBackgroundDisplay() {
+        const container = document.querySelector(".container")
+
+        if (getBackgroundDisplayFromLocalStorage() === null) {
+            let script = `./assets/img/wallpaper/${Math.floor(Math.random() * 64) + 1}.jpg`;
+            container.style.backgroundImage = `url(${script})`;
+            setBackgroundDisplayToLocalStorage(script);
+        } else {
+            container.style.backgroundImage = `url(${this.getBackgroundDisplay()})`;
+        };
+
+        return this;
+    };
+
+    getBackgroundDisplay() {
+        return getBackgroundDisplayFromLocalStorage();
+    };
+};
