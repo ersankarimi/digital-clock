@@ -155,6 +155,15 @@ body {
 .display .todo-wrapper .todo-list-wrapper .list-todo .todo-item {
   margin: 0.25em 0;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding: 4px;
 }
 
 .display .todo-wrapper .todo-list-wrapper .list-todo .todo-item img {
@@ -166,21 +175,15 @@ body {
   opacity: 60%;
 }
 
-.display .todo-wrapper .todo-list-wrapper .list-todo .todo-item-checkbox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 4px;
-}
-
-.display .todo-wrapper .todo-list-wrapper .list-todo #todo-item {
+.display .todo-wrapper .todo-list-wrapper .list-todo .todo-item-name {
+  font-size: 1rem;
   caret-color: rgba(255, 255, 255, 0.8);
   background-color: transparent;
   border: transparent;
   color: rgba(255, 255, 255, 0.8);
 }
 
-.display .todo-wrapper .todo-list-wrapper .list-todo #todo-item:focus {
+.display .todo-wrapper .todo-list-wrapper .list-todo .todo-item-name:focus {
   color: rgba(179, 179, 179, 0.8);
 }
 

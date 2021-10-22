@@ -257,6 +257,10 @@ body {
                 .todo-item {
                     margin: 0.25em 0;
                     position: relative;
+                    display: flex;
+                    align-items: center;
+                    align-content: center;
+                    padding: 4px;
 
                     img {
                         width: 15px;
@@ -268,23 +272,15 @@ body {
                     }
                 }
 
-                .todo-item-checkbox {
-                    display: flex;
-                    padding: 4px;
-
-                    // #todo-item-checkbox {
-                    //     margin: 0 4px 0 0;
-                    // }
-                }
-
-                #todo-item {
+                .todo-item-name {
+                    font-size: 1rem;
                     caret-color: $text-color-white;
                     background-color: transparent;
                     border: transparent;
                     color: $text-color-white;
                 }
 
-                #todo-item:focus {
+                .todo-item-name:focus {
                     color: darken($color: $text-color-white, $amount: 30%);
                 }
             }
