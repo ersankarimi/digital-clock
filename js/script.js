@@ -93,7 +93,7 @@ class UiInteraction {
                 setTodoOpenToLocalStorage("true");
                 todoListWrapper.style.display = "flex";
 
-                if (valueItemTodoList == null) {
+                if (valueItemTodoList.length < 1) {
                     buttonNewTodoList.style.display = "inline-block"
                     newTodoListInput.style.display = "none"
                 } else {
@@ -360,10 +360,13 @@ class TodoListManagement {
                 newTodoListInput.value = ""
 
                 // hide caption in middle menu todo list
-                const todoListCaptionMiddle = document.querySelector(".todo-caption-middle").style.display = "none";
+                todoListCaptionMiddle.style.display = "none";
 
                 // add todo list to UI
                 TodoListManagement.makeTodoListToDisplay(newTodoList);
+            } else if (e.code === "Enter" && newTodoListInput.value.length <= 1) {
+                e.preventDefault();
+                alert("TODO must be filled out")
             };
         });
 
@@ -384,7 +387,7 @@ class TodoListManagement {
     };
 
     getTodoListItem(dataLocal) {
-        return dataLocal
+        return dataLocal;
     };
 
     renderOpenTodo(valueTodoOpenedLocal) {
@@ -423,4 +426,59 @@ class TodoListManagement {
         };
         return this;
     };
+
+    deleteTodoList() {
+        const deleteTodo = document.querySelectorAll(".delete-icon")
+        deleteTodo.forEach(function (element) {
+            element.addEventListener("click", function (e) {
+                let parent = e.target.parentElement;
+                TodoListManagement.updateTodoListWhenDelete(parent)
+                parent.remove();
+
+                TodoListManagement.checkTodoListItem(JSON.parse(getTodoListItemNameFromLocalStorage()));
+            });
+        });
+        return this;
+    };
+
+    static updateTodoListWhenDelete(parent) {
+        const todoListName = parent.querySelector(".todo-item-name").value;
+        for (const todoList of TodoListItem.todoListItem) {
+            if (todoList.name === todoListName) {
+                TodoListItem.todoListItem.splice(TodoListItem.todoListItem.indexOf(todoList), 1);
+
+                setTodoListItemNameToLocalStorage(JSON.stringify(TodoListItem.todoListItem));
+            };
+        };
+
+        return this;
+    };
+
+    static checkTodoListItem(valueLocal) {
+        if (valueLocal.length < 1) {
+            const todoListCaptionMiddle = document.querySelector(".todo-caption-middle").style.display = "block";
+        };
+
+        return this;
+    };
+
+    changesTodoList() {
+        const todoListName = document.querySelectorAll(".todo-item-name");
+
+        todoListName.forEach(element => {
+            element.addEventListener("click", function (e) {
+                let valueBefore = e.target.value
+                e.target.addEventListener("change", function (e) {
+                    for (const todoListName of TodoListItem.todoListItem) {
+                        if (todoListName.name === valueBefore) {
+                            TodoListItem.todoListItem[TodoListItem.todoListItem.indexOf(todoListName)].name = e.target.value;
+                            setTodoListItemNameToLocalStorage(JSON.stringify(TodoListItem.todoListItem));
+                        };
+                    }
+                });
+            });
+        });
+        return this;
+    };
+
 };
