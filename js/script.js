@@ -72,7 +72,7 @@ class UiInteraction {
         })
     };
 
-    static OpenAndCloseTodoList(valueFromLocalStorage) {
+    static openAndCloseTodoList(valueFromLocalStorage) {
         // variabel element dari title todo pojok kanan bawah
         const openCloseTodoList = document.querySelector("#todo-opened");
 

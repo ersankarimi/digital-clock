@@ -87,6 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
         displayQuotes.style.margin = quotesDisplay.margin;
 
         // open and close todo list menu
-        const openCloseTodoListMenu = UiInteraction.OpenAndCloseTodoList(getTodoOpenFromLocalStorage());
+        const openCloseTodoListMenu = UiInteraction.openAndCloseTodoList(getTodoOpenFromLocalStorage());
     }, 1000);
 });
