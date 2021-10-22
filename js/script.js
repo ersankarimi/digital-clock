@@ -70,7 +70,25 @@ class UiInteraction {
                 setBackgroundDisplayToLocalStorage(script);
             }, 550)
         })
-    }
+    };
+
+    static OpenAndCloseTodoList(valueFromLocalStorage) {
+        // variabel element dari title todo pojok kanan bawah
+        const openCloseTodoList = document.querySelector("#todo-opened");
+
+        // variabel element dari todo list wrapper (container nya)
+        const todoListWrapper = document.querySelector(".todo-list-wrapper");
+
+        openCloseTodoList.addEventListener("click", function () {
+            if (valueFromLocalStorage == "true") {
+                setTodoOpenToLocalStorage("false");
+                todoListWrapper.style.display = "none";
+            } else {
+                setTodoOpenToLocalStorage("true");
+                todoListWrapper.style.display = "flex";
+            };
+        });
+    };
 };
 class Clock {
     currentClock(currentTime) {
@@ -277,5 +295,26 @@ class BackgroundDisplay {
 
     getBackgroundDisplay() {
         return getBackgroundDisplayFromLocalStorage();
+    };
+};
+
+class TodoListManagement {
+    constructor(todoOpened) {
+        this.todoOpened = todoOpened;
+    };
+
+
+    renderOpenTodo() {
+        // variabel element dari todo list wrapper (container nya)
+        const todoListWrapper = document.querySelector(".todo-list-wrapper");
+        if (this.todoOpened === null || this.todoOpened === "false") {
+            setTodoOpenToLocalStorage("false")
+            todoListWrapper.style.display = "none";
+        } else {
+            setTodoOpenToLocalStorage("true");
+            todoListWrapper.style.display = "flex";
+        };
+
+        return this;
     };
 };
