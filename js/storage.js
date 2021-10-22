@@ -5,6 +5,7 @@ const cacheShowSecond = "SHOW_SECOND";
 const cacheQuotes = "QUOTES";
 const cacheBackgroundDisplay = "BACKGROUND";
 const cacheTodoOpened = "TODO_OPENED";
+const cacheTodoListItemName = "TODO_LIST_ITEM_NAME";
 
 // set user name
 function setUsernameToLocalStorage(value) {
@@ -58,4 +59,13 @@ function setTodoOpenToLocalStorage(value) {
 
 function getTodoOpenFromLocalStorage() {
     return localStorage.getItem(cacheTodoOpened);
+};
+
+// set and get todo list item name
+function setTodoListItemNameToLocalStorage(value) {
+    localStorage.setItem(cacheTodoListItemName, value);
+};
+
+function getTodoListItemNameFromLocalStorage() {
+    return localStorage.getItem(cacheTodoListItemName);
 };
