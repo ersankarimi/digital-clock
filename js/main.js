@@ -32,6 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const saying = new SayingForDisplay().setFontSize("4rem");
     console.log(saying);
 
+    // this todo intraction and logic
+    const todoList = new TodoListManagement(getTodoOpenFromLocalStorage());
+    // to render the previous todo list has been opened
+    todoList.renderOpenTodo();
+
+    // USE STATIC CLASS AND METHOD
     // set username
     const username = UiInteraction.setUsername();
     // more setting clock display
@@ -58,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // changes background display
     const changesBackgroundDisplay = UiInteraction.changesBackgroundDisplay();
 
-
     // updating state every one second
     const repeat = setInterval(() => {
         saying.setSayingForDisplay(new Date, day.currentDay)
@@ -81,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         displayQuotes.style.fontSize = quotesDisplay.fontSize;
         displayQuotes.style.margin = quotesDisplay.margin;
 
-
+        // open and close todo list menu
+        const openCloseTodoListMenu = UiInteraction.OpenAndCloseTodoList(getTodoOpenFromLocalStorage());
     }, 1000);
 });
