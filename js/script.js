@@ -72,20 +72,34 @@ class UiInteraction {
         })
     };
 
-    static openAndCloseTodoList(valueFromLocalStorage) {
+    static openAndCloseTodoList(valueOpenTodoFromLocalStorage, valueItemTodoList) {
         // variabel element dari title todo pojok kanan bawah
         const openCloseTodoList = document.querySelector("#todo-opened");
 
         // variabel element dari todo list wrapper (container nya)
         const todoListWrapper = document.querySelector(".todo-list-wrapper");
 
+        // variabel to get element button new todo
+        const buttonNewTodoList = document.querySelector(".btn-new-todo");
+
+        // variabel untuk element input new todo
+        const newTodoListInput = document.querySelector("#new-todo-input");
+
         openCloseTodoList.addEventListener("click", function () {
-            if (valueFromLocalStorage == "true") {
+            if (valueOpenTodoFromLocalStorage == "true") {
                 setTodoOpenToLocalStorage("false");
                 todoListWrapper.style.display = "none";
             } else {
                 setTodoOpenToLocalStorage("true");
                 todoListWrapper.style.display = "flex";
+
+                if (valueItemTodoList == null) {
+                    buttonNewTodoList.style.display = "inline-block"
+                    newTodoListInput.style.display = "none"
+                } else {
+                    buttonNewTodoList.style.display = "none"
+                    newTodoListInput.style.display = "block"
+                };
             };
         });
     };
@@ -120,6 +134,7 @@ class Clock {
 
                 // AM and PM format
                 let ampm = hr >= 12 ? "PM" : "AM";
+
                 return getShowSecondFromLocalStorage() === "true" || getShowSecondFromLocalStorage() === null ? `${hr}:${min}:${sec}` : `${hr}:${min}`;
         }
     }
@@ -216,9 +231,9 @@ class SayingForDisplay {
         switch (getClockFormat24LocalStorage()) {
             case null:
             case "true":
-                this.sayingDisplayText = hr >= 0 && hr <= 12 ? this.rotateSayingText(day, min, "morning") // morning
+                this.sayingDisplayText = hr >= 0 && hr <= 11 ? this.rotateSayingText(day, min, "morning") // morning
                     :
-                    hr > 12 && hr <= 18 ? this.rotateSayingText(day, min, "afternoon") // afternoon
+                    hr >= 12 && hr <= 18 ? this.rotateSayingText(day, min, "afternoon") // afternoon
                     :
                     this.rotateSayingText(day, min, "evening"); // evening
 
@@ -298,16 +313,84 @@ class BackgroundDisplay {
     };
 };
 
-class TodoListManagement {
-    constructor(todoOpened) {
-        this.todoOpened = todoOpened;
+class TodoListItem {
+    static todoListItem = []
+
+    constructor(todoListName, todoListStatus) {
+        this.todoListName = todoListName;
+        this.todoListStatus = todoListStatus;
+        TodoListItem.setTodoListItem({
+            name: this.todoListName,
+            status: this.todoListStatus
+        });
+
+        setTodoListItemNameToLocalStorage(JSON.stringify(TodoListItem.todoListItem))
+        return this;
     };
 
+    static setTodoListItem(todoListItem) {
+        this.todoListItem.push(todoListItem);
 
-    renderOpenTodo() {
+        return this;
+    };
+};
+class TodoListManagement {
+    addNewTodoList() {
+        // variabel seleksi element todo-caption-middle
+        const todoListCaptionMiddle = document.querySelector(".todo-caption-middle");
+
+        // variabel to get element button new todo
+        const buttonNewTodoList = document.querySelector(".btn-new-todo");
+
+        // variabel untuk element input new todo
+        const newTodoListInput = document.querySelector("#new-todo-input");
+
+        buttonNewTodoList.addEventListener("click", function () {
+            buttonNewTodoList.style.display = "none";
+            newTodoListInput.style.display = "block";
+            newTodoListInput.focus();
+        });
+
+        newTodoListInput.addEventListener("keyup", (e) => {
+            if (e.code === "Enter" && newTodoListInput.value.length >= 2) {
+                e.preventDefault();
+                const newTodoList = new TodoListItem(newTodoListInput.value, "false");
+
+                // after enter reset value of input ""
+                newTodoListInput.value = ""
+
+                // hide caption in middle menu todo list
+                const todoListCaptionMiddle = document.querySelector(".todo-caption-middle").style.display = "none";
+
+                // add todo list to UI
+                TodoListManagement.makeTodoListToDisplay(newTodoList);
+            };
+        });
+
+        return this;
+    };
+
+    static makeTodoListToDisplay(todoList) {
+        const listTodoItem = document.querySelector(".list-todo");
+        const todoListWrapper = document.createElement("div");
+        todoListWrapper.classList.add("todo-item");
+
+        todoListWrapper.innerHTML = `
+        <input type="checkbox" class="todo-item-checkbox" name="todo-item-checkbox">
+        <input class="todo-item-name" name="todo-item-name" value="${todoList.todoListName}">
+        <img src="assets/img/icon/trash-icon.svg" alt="delete-icon" class="delete-icon">`;
+
+        listTodoItem.appendChild(todoListWrapper);
+    };
+
+    getTodoListItem(dataLocal) {
+        return dataLocal
+    };
+
+    renderOpenTodo(valueTodoOpenedLocal) {
         // variabel element dari todo list wrapper (container nya)
         const todoListWrapper = document.querySelector(".todo-list-wrapper");
-        if (this.todoOpened === null || this.todoOpened === "false") {
+        if (valueTodoOpenedLocal === null || valueTodoOpenedLocal === "false") {
             setTodoOpenToLocalStorage("false")
             todoListWrapper.style.display = "none";
         } else {
@@ -315,6 +398,29 @@ class TodoListManagement {
             todoListWrapper.style.display = "flex";
         };
 
+        return this;
+    };
+
+    renderTodoListHistory(getTodoListItem) {
+        // caption middle todo list
+        const todoListCaptionMiddle = document.querySelector(".todo-caption-middle");
+        // variabel untuk element input new todo
+        const newTodoListInput = document.querySelector("#new-todo-input");
+
+        if (getTodoListItem < 1) {
+            todoListCaptionMiddle.style.display = "block";
+            newTodoListInput.style.display = "none";
+        } else {
+            for (const todoList of JSON.parse(getTodoListItemNameFromLocalStorage())) {
+                const newTodoList = new TodoListItem(todoList.name, todoList.status);
+
+                // add todo list to UI
+                TodoListManagement.makeTodoListToDisplay(newTodoList);
+
+                newTodoListInput.style.display = "block";
+                todoListCaptionMiddle.style.display = "none";
+            };
+        };
         return this;
     };
 };
