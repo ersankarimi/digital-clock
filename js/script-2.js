@@ -56,28 +56,28 @@ const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday
 const todoCaptionMiddle = container.querySelector(".todo-caption-middle");
 
 const sayingTwo = {
-    "sunday" : {
-        "morning" : [`Good morning ${getNameFromLocalStorage()}.`, `Enjoy your weekend ${getNameFromLocalStorage()}.`, `It's weekends, do domething ${getNameFromLocalStorage()}.`],
-        "afternoon" : [`Good afternoon ${getNameFromLocalStorage()}.`, `Sleep for a while ${getNameFromLocalStorage()}.`, `Be grateful ${getNameFromLocalStorage()}.`],
+    "sunday": {
+        "morning": [`Good morning ${getNameFromLocalStorage()}.`, `Enjoy your weekend ${getNameFromLocalStorage()}.`, `It's weekends, do domething ${getNameFromLocalStorage()}.`],
+        "afternoon": [`Good afternoon ${getNameFromLocalStorage()}.`, `Sleep for a while ${getNameFromLocalStorage()}.`, `Be grateful ${getNameFromLocalStorage()}.`],
         "evening": [`Good evening ${getNameFromLocalStorage()}.`, `Take a rest ${getNameFromLocalStorage()}.`, `Gather Your Strength ${getNameFromLocalStorage()}.`]
     },
     "monday": {
-        "morning" : [`Good morning, ${getNameFromLocalStorage()}.`, `Grab your coffee ${getNameFromLocalStorage()}.`, `Keep going ${getNameFromLocalStorage()}!`],
+        "morning": [`Good morning, ${getNameFromLocalStorage()}.`, `Grab your coffee ${getNameFromLocalStorage()}.`, `Keep going ${getNameFromLocalStorage()}!`],
         "afternoon": [`Good afternoon, ${getNameFromLocalStorage()}.`, `Keep it up!`, `Be still ${getNameFromLocalStorage()}.`],
         "evening": [`Good evening, ${getNameFromLocalStorage()}.`, `Be grateful ${getNameFromLocalStorage()}.`, `Take a rest ${getNameFromLocalStorage()}!`]
-    }, 
+    },
     "tuesday": {
         "morning": [`Good morning, ${getNameFromLocalStorage()}.`, `Be nice.`, `Never give up.`],
         "afternoon": [`Good afternoon, ${getNameFromLocalStorage()}.`, `Just do it!`, `And still, I rise`],
         "evening": [`Good evening, ${getNameFromLocalStorage()}.`, `Strive for greatness.`, `Rest and be thankful.`]
-    }, 
+    },
     "wednesday": {
         "morning": [`Good morning, ${getNameFromLocalStorage()}.`, `Start doing ${getNameFromLocalStorage()}.`, `Love for all.`],
         "afternoon": [`Good afternoon, ${getNameFromLocalStorage()}.`, `Strive for greatness.`, `Be nice.`],
         "evening": [`Good evening, ${getNameFromLocalStorage()}.`, `Just rest, it's okay.`, `Take a rest ${getNameFromLocalStorage()}!`]
     },
     "thursday": {
-        "morning": [`Good morning, ${getNameFromLocalStorage()}.`, `You can do it.`, `Be nice.`], 
+        "morning": [`Good morning, ${getNameFromLocalStorage()}.`, `You can do it.`, `Be nice.`],
         "afternoon": [`Good afternoon, ${getNameFromLocalStorage()}.`, `Grab your coffee.`, `Keep it up!`],
         "evening": [`Good evening, ${getNameFromLocalStorage()}.`, `Sleep well, ${getNameFromLocalStorage()}.`, `Take a rest, ${getNameFromLocalStorage()}!`]
     },
@@ -86,7 +86,7 @@ const sayingTwo = {
         "afternoon": [`Good afternoon, ${getNameFromLocalStorage()}.`, `Love yourself ${getNameFromLocalStorage()}.`, `Grab your coffee, ${getNameFromLocalStorage()}.`],
         "evening": [`Good evening, ${getNameFromLocalStorage()}.`, `Sleep well ${getNameFromLocalStorage()}.`, `Be greatful.`]
     },
-    "saturday" : {
+    "saturday": {
         "morning": [`Good morning, ${getNameFromLocalStorage()}.`, `Do something ${getNameFromLocalStorage()}.`, `Grab your coffee.`],
         "afternoon": [`Good afternoon, ${getNameFromLocalStorage()}.`, `Take a nap.`, `Do something ${getNameFromLocalStorage()}.`],
         "evening": [`Good evening, ${getNameFromLocalStorage()}`, `Sleep well.`, `It's okey, just rest!`]
@@ -103,9 +103,9 @@ let todoListItemDoneUpdate = [];
 
 // function rotate quote
 function rotateSaying(quoteList, day, time, min, i) {
-    return (min >= 0 && min <= 20) ? quoteList[day][time][i]
-    : (min >= 21 && min <= 40) ? quoteList[day][time][i+1]
-    : quoteList[day][time][i+2]
+    return (min >= 0 && min <= 20) ? quoteList[day][time][i] :
+        (min >= 21 && min <= 40) ? quoteList[day][time][i + 1] :
+        quoteList[day][time][i + 2]
 };
 
 
@@ -113,9 +113,11 @@ function rotateSaying(quoteList, day, time, min, i) {
 // function saying 24 clock
 function sayingdisplay24(hrs) {
     let clock = parseInt(hrs[0] + hrs[1]);
-    return clock >= 0 && clock <=12 ? rotateSaying(sayingTwo, showDay().toLowerCase(), "morning", new Date().getMinutes(), 0) // morning
-    : clock > 12 && clock <= 18 ? rotateSaying(sayingTwo, showDay().toLowerCase(), "afternoon", new Date().getMinutes(), 0) // afternoon
-    : rotateSaying(sayingTwo, showDay().toLowerCase(), "evening", new Date().getMinutes(), 0); // evening
+    return clock >= 0 && clock <= 12 ? rotateSaying(sayingTwo, showDay().toLowerCase(), "morning", new Date().getMinutes(), 0) // morning
+        :
+        clock > 12 && clock <= 18 ? rotateSaying(sayingTwo, showDay().toLowerCase(), "afternoon", new Date().getMinutes(), 0) // afternoon
+        :
+        rotateSaying(sayingTwo, showDay().toLowerCase(), "evening", new Date().getMinutes(), 0); // evening
 }
 
 // function saying 12 clock
@@ -125,9 +127,11 @@ function sayingdisplay12(hrs) {
     clock = clock % 12;
     clock = clock ? clock : 12; // the hour '0' should be '12'
 
-    return (ampm === "AM" && clock >= 0 && clock <=12) ? rotateSaying(sayingTwo, showDay().toLowerCase(), "morning", new Date().getMinutes(), 0) // morning
-    : (clock >= 1 && clock <= 6) ? rotateSaying(sayingTwo, showDay().toLowerCase(), "afternoon", new Date().getMinutes(), 0) // afternoon
-    : rotateSaying(sayingTwo, showDay().toLowerCase(), "evening", new Date().getMinutes(), 0) // evening
+    return (ampm === "AM" && clock >= 0 && clock <= 12) ? rotateSaying(sayingTwo, showDay().toLowerCase(), "morning", new Date().getMinutes(), 0) // morning
+        :
+        (clock >= 1 && clock <= 6) ? rotateSaying(sayingTwo, showDay().toLowerCase(), "afternoon", new Date().getMinutes(), 0) // afternoon
+        :
+        rotateSaying(sayingTwo, showDay().toLowerCase(), "evening", new Date().getMinutes(), 0) // evening
 };
 
 // function show quotes
@@ -168,8 +172,8 @@ function twentyFourClock(clk) {
         hr = "0" + currentTime.getHours();
     };
 
-    return (showSecondFormat === "true") ? `${hr}:${min}:${seconds}`
-    : `${hr}:${min}`;
+    return (showSecondFormat === "true") ? `${hr}:${min}:${seconds}` :
+        `${hr}:${min}`;
 };
 
 // function 12 clock format
@@ -193,8 +197,8 @@ function formatAMPM(date) {
     minutes = minutes < 10 ? '0' + minutes : minutes;
     second = second < 10 ? '0' + second : second;
 
-    return (showSecondFormat === "true") ? `${hours}:${minutes}:${second}`
-    : `${hours}:${minutes}`
+    return (showSecondFormat === "true") ? `${hours}:${minutes}:${second}` :
+        `${hours}:${minutes}`
 };
 
 // function switch to 12 clock format
@@ -236,7 +240,7 @@ changesWallpaperBtn.addEventListener("click", e => {
             // set value to local storage
             setCurrentWallpaper(script);
         }, 550)
-        
+
     } catch (error) {
         console.log(error);
     };
@@ -259,7 +263,7 @@ function giveCheckedAttribute(param1, param2) {
 };
 
 // event click pada todo title right
-function switchShowTodoList(value){
+function switchShowTodoList(value) {
     todoTitleRight.addEventListener("click", () => {
         if (value == "false") {
             setTodoOpened("true")
@@ -268,7 +272,7 @@ function switchShowTodoList(value){
             setTodoOpened("false");
             todoListWrapper.style.display = "none";
 
-            if (todoListItem.length  == 0) {
+            if (todoListItem.length == 0) {
                 buttonNewTodo.style.display = "inline-block";
                 newTodoInput.style.display = "none";
             } else {
@@ -362,7 +366,7 @@ function makeTodoList(value) {
     typeTodo.id = "todo-item";
     typeTodo.name = "todo-item";
     typeTodo.value = value;
-    typeTodo.addEventListener("click",checkChangesTodoListItem)
+    typeTodo.addEventListener("click", checkChangesTodoListItem)
 
     // membuat element icon trash (hapus)
     const deleteTodoIcon = document.createElement("img");
@@ -389,7 +393,8 @@ function addTodoListToLocalStorage(value) {
 
 // update array todoListItem
 function updateArrayTodoListItem(value1, value2) {
-    if (value1 == null && value2 == null) {;
+    if (value1 == null && value2 == null) {
+        ;
         todoListItem = []
         todoListItemDone = []
         setItemTodoList(JSON.stringify(todoListItem));
@@ -413,7 +418,7 @@ function renderHistoryTodoList() {
         // for (const item of todoListItem) {
         //     listTodoParent.append(makeTodoList(item));
         // };
-        for (let i = 0 ; i < todoListItem.length ; i++) {
+        for (let i = 0; i < todoListItem.length; i++) {
             listTodoParent.append(makeTodoList(todoListItem[i]))
             if (todoListItemDoneUpdate[i] == true) {
                 todoListItemDone.splice(i, 1, true)
@@ -465,14 +470,14 @@ function updateLocalStorage(parent) {
     let value = parent.querySelector("#todo-item").value;
     let i = todoListItem.indexOf(value);
     console.log(i);
-    todoListItem.splice(todoListItem.indexOf(value),1);
-    todoListItemDone.splice(i,1);
+    todoListItem.splice(todoListItem.indexOf(value), 1);
+    todoListItemDone.splice(i, 1);
     console.log(todoListItemDone);
     return setItemTodoList(JSON.stringify(todoListItem)), setItemTodoListDone(JSON.stringify(todoListItemDone));
 };
 
 // function saat kita menceklis todo list maka akan tercoret
-function todoListDoneEffect(parent, ket){
+function todoListDoneEffect(parent, ket) {
     // untuk merubah element nya
     let element = parent.querySelector("#todo-item");
     ket == true ? (element.style.textDecoration = "line-through", element.style.color = "rgba(255, 255, 255, .3)") : (element.style.textDecoration = "none", element.style.color = "rgba(255, 255, 255, .8)");
