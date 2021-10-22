@@ -76,6 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // checkChangesTodoListItem();
 
-        
+
     }, 1000);
 })
