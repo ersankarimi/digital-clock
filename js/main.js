@@ -33,9 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(saying);
 
     // this todo intraction and logic
-    const todoList = new TodoListManagement(getTodoOpenFromLocalStorage());
+    const todoList = new TodoListManagement().renderOpenTodo(getTodoOpenFromLocalStorage()).addNewTodoList().renderTodoListHistory(getTodoListItemNameFromLocalStorage());
     // to render the previous todo list has been opened
-    todoList.renderOpenTodo();
+    // todoList.renderOpenTodo(getTodoOpenFromLocalStorage());
+    // todoList.addNewTodoList();
+    // todoList.renderTodoListHistory(getTodoListItemNameFromLocalStorage());
+    // todoList.renderTodoList();
+    console.log(todoList);
 
     // USE STATIC CLASS AND METHOD
     // set username
@@ -87,6 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
         displayQuotes.style.margin = quotesDisplay.margin;
 
         // open and close todo list menu
-        const openCloseTodoListMenu = UiInteraction.openAndCloseTodoList(getTodoOpenFromLocalStorage());
+        const openCloseTodoListMenu = UiInteraction.openAndCloseTodoList(getTodoOpenFromLocalStorage(), getTodoListItemNameFromLocalStorage());
     }, 1000);
 });
