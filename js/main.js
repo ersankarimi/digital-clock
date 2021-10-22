@@ -33,12 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(saying);
 
     // this todo intraction and logic
-    const todoList = new TodoListManagement().renderOpenTodo(getTodoOpenFromLocalStorage()).addNewTodoList().renderTodoListHistory(getTodoListItemNameFromLocalStorage());
-    // to render the previous todo list has been opened
-    // todoList.renderOpenTodo(getTodoOpenFromLocalStorage());
-    // todoList.addNewTodoList();
-    // todoList.renderTodoListHistory(getTodoListItemNameFromLocalStorage());
-    // todoList.renderTodoList();
+    const todoList = new TodoListManagement().renderOpenTodo(getTodoOpenFromLocalStorage()).renderTodoListHistory(getTodoListItemNameFromLocalStorage()).addNewTodoList().changesTodoList(); // to render the previous todo list has been opened
     console.log(todoList);
 
     // USE STATIC CLASS AND METHOD
@@ -70,6 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // updating state every one second
     const repeat = setInterval(() => {
+        // for delete todo list item
+        todoList.deleteTodoList();
+
         saying.setSayingForDisplay(new Date, day.currentDay)
         displayDay.innerText = day.currentDay;
         displayDay.style.fontSize = day.fontSize;
@@ -91,6 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
         displayQuotes.style.margin = quotesDisplay.margin;
 
         // open and close todo list menu
-        const openCloseTodoListMenu = UiInteraction.openAndCloseTodoList(getTodoOpenFromLocalStorage(), getTodoListItemNameFromLocalStorage());
+        const openCloseTodoListMenu = UiInteraction.openAndCloseTodoList(getTodoOpenFromLocalStorage(), JSON.parse(getTodoListItemNameFromLocalStorage()));
     }, 1000);
 });
