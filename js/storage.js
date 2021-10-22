@@ -4,6 +4,7 @@ const cacheClockFormat24 = "CLOCK_FORMAT_24";
 const cacheShowSecond = "SHOW_SECOND";
 const cacheQuotes = "QUOTES";
 const cacheBackgroundDisplay = "BACKGROUND";
+const cacheTodoOpened = "TODO_OPENED";
 
 // set user name
 function setUsernameToLocalStorage(value) {
@@ -48,4 +49,13 @@ function setBackgroundDisplayToLocalStorage(value) {
 
 function getBackgroundDisplayFromLocalStorage() {
     return localStorage.getItem(cacheBackgroundDisplay);
+};
+
+// set and get, is todo already opened ?
+function setTodoOpenToLocalStorage(value) {
+    localStorage.setItem(cacheTodoOpened, value);
+};
+
+function getTodoOpenFromLocalStorage() {
+    return localStorage.getItem(cacheTodoOpened);
 };
