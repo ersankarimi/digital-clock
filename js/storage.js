@@ -1,90 +1,71 @@
-const cacheKey = "FORMAT";
-const cacheName = "NAME";
-const cacheWallpaper = "WALLPAPER";
-const cacheSecond = "SECOND";
+"use strict";
+const cacheUsername = "USER_NAME";
+const cacheClockFormat24 = "CLOCK_FORMAT_24";
+const cacheShowSecond = "SHOW_SECOND";
 const cacheQuotes = "QUOTES";
-const cacheTodoAlready = "TODO_ALREADY";
+const cacheBackgroundDisplay = "BACKGROUND";
 const cacheTodoOpened = "TODO_OPENED";
-const cacheItemTodoList = "TODO_LIST_ITEM";
-const cacheItemTodoListDone = "TODO_LIST_ITEM_DONE";
+const cacheTodoListItemName = "TODO_LIST_ITEM_NAME";
 
-// punya clock
-function checkStatusClockFormat(el) {
-    localStorage.setItem(cacheKey, el);
+// set user name
+function setUsernameToLocalStorage(value) {
+    localStorage.setItem(cacheUsername, value);
 };
 
-function getValueClockFormat() {
-    return localStorage.getItem(cacheKey);
+function getUsernameFromLocalStorage() {
+    return localStorage.getItem(cacheUsername);
 };
 
-// punya nama
-function setNameToLocalStorage(val) {
-    localStorage.setItem(cacheName, val);
+// set clock 24 format to local storage (true/false)
+function setClockFormat24LocalStorage(value) {
+    localStorage.setItem(cacheClockFormat24, value);
 };
 
-function getNameFromLocalStorage() {
-    return localStorage.getItem(cacheName);
+function getClockFormat24LocalStorage() {
+    return localStorage.getItem(cacheClockFormat24);
 };
 
-// punya wallpaper
-function setCurrentWallpaper(val) {
-    localStorage.setItem(cacheWallpaper, val);
-}
-
-function getLastWallpaper() {
-    return localStorage.getItem(cacheWallpaper);
-}
-
-// punya second
-function setShowSecond(val) {
-    localStorage.setItem(cacheSecond, val);
+// set show second or not to local storage (true/false)
+function setShowSecondToLocalStorage(value) {
+    localStorage.setItem(cacheShowSecond, value);
 };
 
-function getShowSecond() {
-    return localStorage.getItem(cacheSecond);
+function getShowSecondFromLocalStorage(value) {
+    return localStorage.getItem(cacheShowSecond);
 };
 
-// punya qoutes
-function setQuotes(value) {
+// set and get quotes for user display
+function setQuotesToLocalStorage(value) {
     localStorage.setItem(cacheQuotes, value);
 };
 
-function getQuotes() {
+function getQuotesFromLocalStorage() {
     return localStorage.getItem(cacheQuotes);
 };
 
-// punya button new todo
-function setTodoAlready(value) {
-    localStorage.setItem(cacheTodoAlready, value);
+// set and get background display
+function setBackgroundDisplayToLocalStorage(value) {
+    localStorage.setItem(cacheBackgroundDisplay, value);
 };
 
-function getTodoAlready() {
-    return localStorage.getItem(cacheTodoAlready);
+function getBackgroundDisplayFromLocalStorage() {
+    return localStorage.getItem(cacheBackgroundDisplay);
 };
 
-// punya title todo pojok kanan bawah
-function setTodoOpened(value) {
+// set and get, is todo already opened ?
+function setTodoOpenToLocalStorage(value) {
     localStorage.setItem(cacheTodoOpened, value);
 };
 
-function getTodoOpened() {
+function getTodoOpenFromLocalStorage() {
     return localStorage.getItem(cacheTodoOpened);
 };
 
-// punya list item todo list
-function setItemTodoList(value) {
-    localStorage.setItem(cacheItemTodoList, value);
+// set and get todo list item name
+function setTodoListItemNameToLocalStorage(value) {
+    localStorage.setItem(cacheTodoListItemName, value);
 };
 
-function getItemTodoList() {
-    return localStorage.getItem(cacheItemTodoList);
-};
-
-// punya list item todo-list (checked or not?)
-function setItemTodoListDone(value) {
-    localStorage.setItem(cacheItemTodoListDone, value);
-};
-
-function getItemTodoListDone() {
-    return localStorage.getItem(cacheItemTodoListDone);
+function getTodoListItemNameFromLocalStorage() {
+    return localStorage.getItem(cacheTodoListItemName);
 };

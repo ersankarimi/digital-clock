@@ -1,81 +1,94 @@
-"use strict";
+document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
 
-// variabel dan function untuk update
-document.addEventListener("DOMContentLoaded", () => {
-    // get random wallpaper for first time open
-    if (getLastWallpaper() != null) {
-        container.style.backgroundImage = `url(${getLastWallpaper()})`
-    } else {
-        let script = `./assets/img/wallpaper/${randomNum()}.jpg`;
-        container.style.backgroundImage = `url(${script})`;
-        setCurrentWallpaper(script);
-    };
 
-    // get name for input variabel
-    let named = getNameFromLocalStorage();
-    // pengecekan apakah kita belum mengisi nama apa sudah
-    if (named != null) {
-        console.log(named);
-    } else {
-        // get name for input variabel
-        const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
-        const namaToLocal = inputNama.charAt(0).toUpperCase() + inputNama.slice(1);
-        setNameToLocalStorage(namaToLocal);
-        // named = getNameFromLocalStorage();
-    };
+    //  DOM ELEMENT SELECTOR
+    // main parent element variable
+    const container = document.querySelector(".container");
 
-    checkShowTodoList()
+    // display day
+    const displayDay = container.querySelector(".day");
 
-    // function buat kasi tambah todo ke list item todo
-    addTodoListItem();
+    // display clock
+    const displayClock = container.querySelector(".clock");
 
-    // pengecekan apakah local storage untuk
-    // list item todo list kosong atau engga
-    // kalau kosong maka akan set todo list itemnya
-    // pada local storage itu array kosong
-    updateArrayTodoListItem(getItemTodoList(), getItemTodoListDone())
-    renderHistoryTodoList()
-    giveCheckCheckbox()
+    // displaySaying
+    const displaySaying = container.querySelector(".saying");
 
-    // loadTime(value)
-    const repeat = setInterval(function () {
-        let valueLocalStorage = getValueClockFormat()
-        // already checked or no checked for toggle in more button
-        giveCheckedAttribute(valueLocalStorage, getShowSecond());
-        // console.log(valueLocalStorage);
+    // display quotes
+    const displayQuotes = container.querySelector(".quote");
 
-        switchClockFormat();
-        switchShowSecond();
+    // ======================================================
 
-        // display day
-        displayDay.innerText = showDay();
-        let day = displayDay.innerText;
-        displayDay.style.fontSize = "3rem";
-        displayDay.style.fontWeight = "500";
+    // VARIABLE INSTANCE OBJECT
+    // clock is a instance object from class Clock
+    const clock = new Clock().setFontSize("10rem").setMargin("0 0 1rem 0");
+
+    // day is a instance object from class CurrentDay
+    const day = new CurrentDay().setCurrentDay(new Date).setFontsize("3rem").setFontWeight("600");
+    console.log(day);
+
+    // saying is a instance object from class SayingForDisplay
+    const saying = new SayingForDisplay().setFontSize("4rem");
+    console.log(saying);
+
+    // this todo intraction and logic
+    const todoList = new TodoListManagement().renderOpenTodo(getTodoOpenFromLocalStorage()).renderTodoListHistory(getTodoListItemNameFromLocalStorage()).addNewTodoList().changesTodoList().todolistDone(); // to render the previous todo list has been opened
+    console.log(todoList);
+
+    // USE STATIC CLASS AND METHOD
+    // set username
+    const username = UiInteraction.setUsername();
+    // more setting clock display
+    const moreSettingClock = UiInteraction.settingClockDisplay();
+
+    // switch clock format
+    const settingClockFormat = UiInteraction.switchClockFormat(displayClock, clock);
+
+    // switch show second
+    const settingShowSecond = UiInteraction.switchShowSecond(getShowSecondFromLocalStorage());
+
+    // give checked attribute for more setting display clock
+    const checkedAttributeMoreSettingClock = UiInteraction.giveCheckedAttributeMoreSettingClock(getClockFormat24LocalStorage(), getShowSecondFromLocalStorage());
+
+    // quotes for display
+    const quotesDisplay = new QuotesForDisplay().setMargin("2rem 0 0 0").setFontSize("2rem").setQuotesForDisplay();
+
+    // changes quotes display
+    const changesQuotesDisplay = UiInteraction.changesQuotesDisplay();
+
+    // show background display
+    const backgroundDisplay = new BackgroundDisplay().setBackgroundDisplay();
+
+    // changes background display
+    const changesBackgroundDisplay = UiInteraction.changesBackgroundDisplay();
+
+    // updating state every one second
+    const repeat = setInterval(() => {
+        // for delete todo list item
+        todoList.deleteTodoList();
+
+        saying.setSayingForDisplay(new Date, day.currentDay)
+        displayDay.innerText = day.currentDay;
+        displayDay.style.fontSize = day.fontSize;
+        displayDay.style.fontWeight = day.fontWeight;
+
 
         // display clock
-        displayClock.innerText = (valueLocalStorage == "true" || valueLocalStorage == null) ? twentyFourClock() : formatAMPM(new Date);
-        displayClock.style.fontSize = "10rem";
-        displayClock.style.margin = "0 0 1rem 0";
+        displayClock.innerText = clock.currentClock(new Date);
+        displayClock.style.fontSize = clock.fontSize;
+        displayClock.style.margin = clock.margin;
 
-        // display saying
-        displaySaying.innerText = (getValueClockFormat() == "true") ? sayingdisplay24(twentyFourClock()) : sayingdisplay12(new Date);
-        displaySaying.style.fontSize = "4rem";
+        // saying display
+        displaySaying.innerText = saying.getSayingForDisplay();
+        displaySaying.style.fontSize = saying.fontSize;
 
-        // display qoutes
-        displayQuotes.innerText = showQuotes();
-        displayQuotes.style.margin = "2rem 0 0 0";
-        displayQuotes.style.fontSize = "1.5rem";
+        // display quote
+        displayQuotes.innerText = quotesDisplay.getQuotesForDisplay();
+        displayQuotes.style.fontSize = quotesDisplay.fontSize;
+        displayQuotes.style.margin = quotesDisplay.margin;
 
-        // function ini untuk menambahkan event ke TODO title
-        // ketika di click akan menampilkan todolist begitu juga sebaliknya
-        switchShowTodoList(getTodoOpened())
-
-        // function ini untuk menyembunyikan button new todo ketika di klik
-        hideButtonNewTodo();
-
-        // checkChangesTodoListItem();
-
-        
+        // open and close todo list menu
+        const openCloseTodoListMenu = UiInteraction.openAndCloseTodoList(getTodoOpenFromLocalStorage(), JSON.parse(getTodoListItemNameFromLocalStorage()));
     }, 1000);
-})
+});
