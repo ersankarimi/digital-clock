@@ -420,6 +420,9 @@ class TodoListManagement {
                 // add todo list to UI
                 TodoListManagement.makeTodoListToDisplay(newTodoList);
 
+                // render todolist done
+                this.renderTodoListDone(TodoListItem.todoListItem);
+
                 newTodoListInput.style.display = "block";
                 todoListCaptionMiddle.style.display = "none";
             };
@@ -428,6 +431,7 @@ class TodoListManagement {
     };
 
     deleteTodoList() {
+        // delete icon selection
         const deleteTodo = document.querySelectorAll(".delete-icon")
         deleteTodo.forEach(function (element) {
             element.addEventListener("click", function (e) {
@@ -442,7 +446,9 @@ class TodoListManagement {
     };
 
     static updateTodoListWhenDelete(parent) {
+        // delete value selection
         const todoListName = parent.querySelector(".todo-item-name").value;
+
         for (const todoList of TodoListItem.todoListItem) {
             if (todoList.name === todoListName) {
                 TodoListItem.todoListItem.splice(TodoListItem.todoListItem.indexOf(todoList), 1);
@@ -467,7 +473,10 @@ class TodoListManagement {
 
         todoListName.forEach(element => {
             element.addEventListener("click", function (e) {
+                // get value before
                 let valueBefore = e.target.value
+
+                // event change the todo list name
                 e.target.addEventListener("change", function (e) {
                     for (const todoListName of TodoListItem.todoListItem) {
                         if (todoListName.name === valueBefore) {
@@ -478,7 +487,57 @@ class TodoListManagement {
                 });
             });
         });
+
         return this;
     };
 
+    todolistDone() {
+        const checkBoxTodoList = document.querySelectorAll(".todo-item-checkbox");
+
+        checkBoxTodoList.forEach(element => {
+            element.addEventListener("click", function (e) {
+                // selection element todo list name
+                const todoListName = e.target.parentElement.querySelector(".todo-item-name");
+
+                for (const todoList of TodoListItem.todoListItem) {
+                    if (todoList.name === todoListName.value) {
+                        TodoListItem.todoListItem[TodoListItem.todoListItem.indexOf(todoList)].status = e.target.checked ? "true" : "false";
+
+                        // give done effect
+                        TodoListManagement.giveDoneEffectTodoList(todoListName, e.target.checked);
+
+                        // set to local
+                        setTodoListItemNameToLocalStorage(JSON.stringify(TodoListItem.todoListItem));
+                    };
+                };
+            });
+        });
+
+        return this;
+    };
+
+    static giveDoneEffectTodoList(elementTarget, status) {
+        if (status) {
+            elementTarget.style.textDecoration = "line-through"
+            elementTarget.style.color = "rgba(255, 255, 255, .3)"
+        } else {
+            elementTarget.style.textDecoration = "none";
+            elementTarget.style.color = "rgba(255, 255, 255, .8)"
+        }
+        return this;
+    };
+
+    renderTodoListDone(listTodo) {
+        for (const todoStatus of listTodo) {
+            if (todoStatus.status === "true") {
+                // call function give done effect
+                TodoListManagement.giveDoneEffectTodoList(document.querySelectorAll(".todo-item-name")[listTodo.indexOf(todoStatus)], true);
+
+                // give check to the checkbox
+                document.querySelectorAll(".todo-item-checkbox")[listTodo.indexOf(todoStatus)].checked = true;
+            };
+        };
+
+        return this;
+    }
 };
