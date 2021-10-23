@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(saying);
 
     // this todo intraction and logic
-    const todoList = new TodoListManagement().renderOpenTodo(getTodoOpenFromLocalStorage()).renderTodoListHistory(getTodoListItemNameFromLocalStorage()).addNewTodoList().changesTodoList(); // to render the previous todo list has been opened
+    const todoList = new TodoListManagement().renderOpenTodo(getTodoOpenFromLocalStorage()).renderTodoListHistory(getTodoListItemNameFromLocalStorage()).addNewTodoList().changesTodoList().todolistDone(); // to render the previous todo list has been opened
     console.log(todoList);
 
     // USE STATIC CLASS AND METHOD
