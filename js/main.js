@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkedAttributeMoreSettingClock = UiInteraction.giveCheckedAttributeMoreSettingClock(getClockFormat24LocalStorage(), getShowSecondFromLocalStorage());
 
     // quotes for display
-    const quotesDisplay = new QuotesForDisplay().setMargin("2rem 0 0 0").setFontSize("2rem").setQuotesForDisplay();
+    const quotesDisplay = new QuotesForDisplay().setMargin(".8em auto").setFontSize("2rem").setQuotesForDisplay();
 
     // changes quotes display
     const changesQuotesDisplay = UiInteraction.changesQuotesDisplay();
