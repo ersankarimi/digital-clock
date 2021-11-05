@@ -28,26 +28,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const day = new CurrentDay().setCurrentDay(new Date).setFontsize("3rem").setFontWeight("600");
     console.log(day);
 
-    // set username
-    const username = UiInteraction.setUsername();
-
     // saying is a instance object from class SayingForDisplay
     const saying = new SayingForDisplay().setFontSize("4rem");
     console.log(saying);
 
     // this todo intraction and logic
-    const todoList = new TodoListManagement().renderOpenTodo(getTodoOpenFromLocalStorage()).renderTodoListHistory(getTodoListItemNameFromLocalStorage()).addNewTodoList();
+    const todoList = new TodoListManagement().renderOpenTodo(getTodoOpenFromLocalStorage()).renderTodoListHistory(getTodoListItemNameFromLocalStorage()).addNewTodoList().changesTodoList().todolistDone(); // to render the previous todo list has been opened
     console.log(todoList);
 
     // USE STATIC CLASS AND METHOD
+    // set username
+    const username = UiInteraction.setUsername();
     // more setting clock display
     const moreSettingClock = UiInteraction.settingClockDisplay();
+
+    // switch clock format
+    const settingClockFormat = UiInteraction.switchClockFormat(displayClock, clock);
+
+    // switch show second
+    const settingShowSecond = UiInteraction.switchShowSecond(getShowSecondFromLocalStorage());
 
     // give checked attribute for more setting display clock
     const checkedAttributeMoreSettingClock = UiInteraction.giveCheckedAttributeMoreSettingClock(getClockFormat24LocalStorage(), getShowSecondFromLocalStorage());
 
     // quotes for display
-    const quotesDisplay = new QuotesForDisplay().setMargin(".8em auto").setFontSize("2rem").setQuotesForDisplay();
+    const quotesDisplay = new QuotesForDisplay().setMargin("2rem 0 0 0").setFontSize("2rem").setQuotesForDisplay();
 
     // changes quotes display
     const changesQuotesDisplay = UiInteraction.changesQuotesDisplay();
@@ -60,14 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // updating state every one second
     const repeat = setInterval(() => {
-        // for delete todo list item and to render the previous todo list has been opened
-        todoList.changesTodoList().todolistDone().deleteTodoList();
-
-        // switch clock format
-        const settingClockFormat = UiInteraction.switchClockFormat(displayClock, clock);
-
-        // switch show second
-        const settingShowSecond = UiInteraction.switchShowSecond(getShowSecondFromLocalStorage());
+        // for delete todo list item
+        todoList.deleteTodoList();
 
         saying.setSayingForDisplay(new Date, day.currentDay)
         displayDay.innerText = day.currentDay;
