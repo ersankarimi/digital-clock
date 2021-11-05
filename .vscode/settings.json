@@ -1,0 +1,10 @@
+{
+    "liveServer.settings.port": 5501,
+    "editor.cursorBlinking": "expand",
+    "window.title": "${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
+    "window.zoomLevel": 0.5,
+    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.fontWeight": "normal",
+    "editor.fontLigatures": true
+    
+}

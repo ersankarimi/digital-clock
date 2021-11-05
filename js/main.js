@@ -1,58 +1,95 @@
-"use strict";
+document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
 
-// variabel to get name on display
-let named = getNameFromLocalStorage();
-// get name for input variabel
-let nama;
 
-// variabel dan function untuk update
-document.addEventListener("DOMContentLoaded", () => {
+    //  DOM ELEMENT SELECTOR
+    // main parent element variable
+    const container = document.querySelector(".container");
 
-    // pengecekan apakah kita belum mengisi nama apa sudah
-    if (named != null || named != undefined) {
-        nama = getNameFromLocalStorage();
-        console.log(named);
-    } else {
-        // get name for input variabel
-        const inputNama = prompt("Masukkan Nama Panggilan Anda : ");
-        const namaToLocal = inputNama.charAt(0).toUpperCase() + inputNama.slice(1);
-        setNameToLocalStorage(namaToLocal);
-        nama = getNameFromLocalStorage()
-    };
-    // loadTime(value)
-    const repeat = setInterval(function () {
-        // variabel clock
-        let valueLocalStorage = getValueClockFormat();
-        console.log(valueLocalStorage);
+    // display day
+    const displayDay = container.querySelector(".day");
 
-        if (valueLocalStorage === "true") {
-            let clock = twentyFourClock()
-            displayClock.innerText = twentyFourClock(clock);
-            displaySaying.innerText = sayingdisplay24(clock)
-        } else {
-            displayClock.innerText = formatAMPM(new Date);
-            displaySaying.innerText = sayingdisplay12(new Date)
-        };
+    // display clock
+    const displayClock = container.querySelector(".clock");
 
-        switchClockFormat();
+    // displaySaying
+    const displaySaying = container.querySelector(".saying");
 
-        // display day
-        displayDay.innerText = showDay();
-        let day = displayDay.innerText;
-        displayDay.style.fontSize = "3rem";
-        displayDay.style.fontWeight = "500"
+    // display quotes
+    const displayQuotes = container.querySelector(".quote");
+
+    // ======================================================
+
+    // VARIABLE INSTANCE OBJECT
+    // clock is a instance object from class Clock
+    const clock = new Clock().setFontSize("10rem").setMargin("0 0 1rem 0");
+
+    // day is a instance object from class CurrentDay
+    const day = new CurrentDay().setCurrentDay(new Date).setFontsize("3rem").setFontWeight("600");
+    console.log(day);
+
+    // set username
+    const username = UiInteraction.setUsername();
+
+    // saying is a instance object from class SayingForDisplay
+    const saying = new SayingForDisplay().setFontSize("4rem");
+    console.log(saying);
+
+    // this todo intraction and logic
+    const todoList = new TodoListManagement().renderOpenTodo(getTodoOpenFromLocalStorage()).renderTodoListHistory(getTodoListItemNameFromLocalStorage()).addNewTodoList();
+    console.log(todoList);
+
+    // USE STATIC CLASS AND METHOD
+    // more setting clock display
+    const moreSettingClock = UiInteraction.settingClockDisplay();
+
+    // give checked attribute for more setting display clock
+    const checkedAttributeMoreSettingClock = UiInteraction.giveCheckedAttributeMoreSettingClock(getClockFormat24LocalStorage(), getShowSecondFromLocalStorage());
+
+    // quotes for display
+    const quotesDisplay = new QuotesForDisplay().setMargin(".8em auto").setFontSize("2rem").setQuotesForDisplay();
+
+    // changes quotes display
+    const changesQuotesDisplay = UiInteraction.changesQuotesDisplay();
+
+    // show background display
+    const backgroundDisplay = new BackgroundDisplay().setBackgroundDisplay();
+
+    // changes background display
+    const changesBackgroundDisplay = UiInteraction.changesBackgroundDisplay();
+
+    // updating state every one second
+    const repeat = setInterval(() => {
+        // for delete todo list item and to render the previous todo list has been opened
+        todoList.changesTodoList().todolistDone().deleteTodoList();
+
+        // switch clock format
+        const settingClockFormat = UiInteraction.switchClockFormat(displayClock, clock);
+
+        // switch show second
+        const settingShowSecond = UiInteraction.switchShowSecond(getShowSecondFromLocalStorage());
+
+        saying.setSayingForDisplay(new Date, day.currentDay)
+        displayDay.innerText = day.currentDay;
+        displayDay.style.fontSize = day.fontSize;
+        displayDay.style.fontWeight = day.fontWeight;
+
 
         // display clock
-        displayClock.style.fontSize = "10rem"
-        displayClock.style.margin = "0 0 1rem 0"
+        displayClock.innerText = clock.currentClock(new Date);
+        displayClock.style.fontSize = clock.fontSize;
+        displayClock.style.margin = clock.margin;
 
-        // display saying
-        displaySaying.style.fontSize = "4rem"
+        // saying display
+        displaySaying.innerText = saying.getSayingForDisplay();
+        displaySaying.style.fontSize = saying.fontSize;
 
-        // display qoutes
-        displayQuotes.innerText = showQuotes(day);
-        displayQuotes.style.margin = "2rem 0 0 0";
-        displayQuotes.style.fontSize = "1.5rem";
+        // display quote
+        displayQuotes.innerText = quotesDisplay.getQuotesForDisplay();
+        displayQuotes.style.fontSize = quotesDisplay.fontSize;
+        displayQuotes.style.margin = quotesDisplay.margin;
 
+        // open and close todo list menu
+        const openCloseTodoListMenu = UiInteraction.openAndCloseTodoList(getTodoOpenFromLocalStorage(), JSON.parse(getTodoListItemNameFromLocalStorage()));
     }, 1000);
-})
+});

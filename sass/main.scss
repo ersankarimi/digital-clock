@@ -7,6 +7,130 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 /* End My Font */
 
+/* Mixin */
+// mixin
+@mixin toggleClockFormat {
+    .onoffswitch-clockformat {
+        position: relative;
+        width: 40px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        margin: 0 0 0 16px;
+    }
+
+    .onoffswitch-checkbox-clockformat {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        // width: 18px;
+        // height: 20px;
+    }
+
+    .onoffswitch-label-clockformat {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        height: 16px;
+        padding: 0;
+        line-height: 16px;
+        border: 2px solid #E3E3E3;
+        border-radius: 16px;
+        background-color: #FFFFFF;
+        transition: background-color 0.3s ease-in;
+    }
+
+    .onoffswitch-label-clockformat:before {
+        content: "";
+        display: block;
+        width: 16px;
+        margin: 0px;
+        background: #FFFFFF;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 22px;
+        border: 2px solid #E3E3E3;
+        border-radius: 16px;
+        transition: all 0.3s ease-in 0s;
+    }
+
+    .onoffswitch-checkbox-clockformat:checked+.onoffswitch-label-clockformat {
+        background-color: #49E845;
+    }
+
+    .onoffswitch-checkbox-clockformat:checked+.onoffswitch-label-clockformat,
+    .onoffswitch-checkbox-clockformat:checked+.onoffswitch-label-clockformat:before {
+        border-color: #49E845;
+    }
+
+    .onoffswitch-checkbox-clockformat:checked+.onoffswitch-label-clockformat:before {
+        right: 0px;
+    }
+}
+
+@mixin toggleShowSecond {
+    .onoffswitch-showsecond {
+        position: relative;
+        width: 40px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        margin: 0 0 0 16px;
+    }
+
+    .onoffswitch-checkbox-showsecond {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .onoffswitch-label-showsecond {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        height: 16px;
+        padding: 0;
+        line-height: 16px;
+        border: 2px solid #E3E3E3;
+        border-radius: 16px;
+        background-color: #FFFFFF;
+        transition: background-color 0.3s ease-in;
+    }
+
+    .onoffswitch-label-showsecond:before {
+        content: "";
+        display: block;
+        width: 16px;
+        margin: 0px;
+        background: #FFFFFF;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 22px;
+        border: 2px solid #E3E3E3;
+        border-radius: 16px;
+        transition: all 0.3s ease-in 0s;
+    }
+
+    .onoffswitch-checkbox-showsecond:checked+.onoffswitch-label-showsecond {
+        background-color: #49E845;
+    }
+
+    .onoffswitch-checkbox-showsecond:checked+.onoffswitch-label-showsecond,
+    .onoffswitch-checkbox-showsecond:checked+.onoffswitch-label-showsecond:before {
+        border-color: #49E845;
+    }
+
+    .onoffswitch-checkbox-showsecond:checked+.onoffswitch-label-showsecond:before {
+        right: 0px;
+    }
+}
+
+/* End Mixin */
+
+
+
 /* My CSS */
 :root {
     font-size: 16px;
@@ -28,7 +152,9 @@ body {
     align-items: center;
     align-content: center;
     justify-content: center;
-    background-image: url("../assets/img/wallpaper/14.jpg");
+    // background-image: url("../assets/img/wallpaper/14.jpg");
+    background-color: #949494;
+    transition: all 2s;
     background-size: cover;
     object-fit: cover;
     object-position: center;
@@ -36,9 +162,15 @@ body {
 }
 
 .display {
-    padding: 1rem;
+    padding: 5rem 1rem 1rem 1rem;
     color: #fff;
     text-align: center;
+
+    // quote style
+    .quote {
+        max-width: 100%;
+        padding: 0 2em;
+    }
 
     // random wallpaper and quotes style
     .random-icon {
@@ -85,6 +217,124 @@ body {
             opacity: 1;
         }
     }
+
+    // End random icon and quotes style
+
+    // start style todo
+    .todo-wrapper {
+        // variabel
+        $main-color: rgba(0, 0, 0, .6);
+        $text-color-white: rgba(255, 255, 255, .8);
+
+        display: flex;
+        padding: 2rem;
+        flex-direction: column;
+        position: absolute;
+        right: 16px;
+        bottom: 0;
+
+        .todo-title-left {
+            text-align: left;
+            margin: 0 0 2em 0;
+
+        }
+
+        .todo-title-right {
+            text-align: right;
+            margin: 1em 0 0 0;
+
+            span {
+                cursor: pointer;
+                padding: 4px;
+            }
+        }
+
+        .todo-list-wrapper {
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            background-color: $main-color;
+            margin: 0 0 .5em 0;
+
+            .list-todo {
+                text-align: left;
+
+                .todo-item {
+                    margin: 0.25em 0;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    align-content: center;
+                    padding: 4px;
+
+                    img {
+                        width: 15px;
+                        height: 15px;
+                        position: absolute;
+                        right: 0;
+                        cursor: pointer;
+                        opacity: 60%;
+                    }
+                }
+
+                .todo-item-name {
+                    font-size: 1rem;
+                    caret-color: $text-color-white;
+                    background-color: transparent;
+                    border: transparent;
+                    color: $text-color-white;
+                }
+
+                .todo-item-name:focus {
+                    color: darken($color: $text-color-white, $amount: 30%);
+                }
+            }
+
+            .todo-caption-middle {
+                margin: 3em;
+                color: $text-color-white;
+
+                .btn-new-todo {
+                    margin: 1em 0 0 0;
+                    width: 75%;
+                    border-radius: 16px;
+                    padding: 8px;
+                    background-color: #8CA1A5;
+                    color: $text-color-white;
+                    border: transparent;
+                }
+
+                .btn-new-todo:hover {
+                    background-color: darken($color: #8ca1a5, $amount: 10%);
+                }
+            }
+
+            #new-todo-input {
+                padding: 4px;
+                margin-top: 1em;
+                color: $text-color-white;
+                caret-color: $text-color-white;
+                background-color: transparent;
+                border: transparent;
+                display: none;
+            }
+        }
+
+        .todo-list-wrapper::after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 16px solid $main-color;
+            position: absolute;
+            right: 38px;
+            bottom: 56px;
+        }
+    }
+
+    // end style todo
 }
 
 .display-clock {
@@ -127,79 +377,35 @@ body {
     // popover style
     .popover-bottom {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 12px 0;
         padding: 8px;
         background-color: rgba(51, 51, 51, .5);
+
+        .flex-toggle {
+            display: flex;
+        }
     }
 
     .hide {
         opacity: 0;
     }
 
-    .label-clock-format {
+    .flex-toggle {
+        margin: 8px 8px 0 0;
+    }
+
+    .label-clock-format,
+    .label-clock-second {
         font-size: 1rem;
         margin: 0 16px 0 0;
     }
 
-    .onoffswitch {
-        position: relative;
-        width: 40px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        margin: 0 0 0 16px;
-    }
+    @include toggleClockFormat();
+    @include toggleShowSecond();
 
-    .onoffswitch-checkbox {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    .onoffswitch-label {
-        display: block;
-        overflow: hidden;
-        cursor: pointer;
-        height: 16px;
-        padding: 0;
-        line-height: 16px;
-        border: 2px solid #E3E3E3;
-        border-radius: 16px;
-        background-color: #FFFFFF;
-        transition: background-color 0.3s ease-in;
-    }
-
-    .onoffswitch-label:before {
-        content: "";
-        display: block;
-        width: 16px;
-        margin: 0px;
-        background: #FFFFFF;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 22px;
-        border: 2px solid #E3E3E3;
-        border-radius: 16px;
-        transition: all 0.3s ease-in 0s;
-    }
-
-
-    .onoffswitch-checkbox:checked+.onoffswitch-label {
-        background-color: #49E845;
-    }
-
-    .onoffswitch-checkbox:checked+.onoffswitch-label,
-    .onoffswitch-checkbox:checked+.onoffswitch-label:before {
-        border-color: #49E845;
-    }
-
-    .onoffswitch-checkbox:checked+.onoffswitch-label:before {
-        right: 0px;
-    }
 }
 
 .display-clock:hover .more-btn-primary {
@@ -209,5 +415,9 @@ body {
 .more-btn-primary:hover {
     background-color: rgba(255, 255, 255, .2);
 }
+
+
+
+
 
 /* End My CSS */

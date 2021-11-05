@@ -30,20 +30,39 @@
 
                 <!-- Start More Button -->
                 <div id="more-btn" class="more-btn">
-                    <!-- More Button On Screen -->
+                    <!-- Start More Button On Screen -->
                     <div class="more-btn-primary">
-                        <img src="img/icon/more-horizontal.png" alt="more button" class="more-btn-icon">
+                        <img src="assets/img/icon/more-horizontal.png" alt="more button" class="more-btn-icon">
                     </div>
-                    <!-- More Button On Screen -->
+                    <!-- End More Button On Screen -->
 
                     <!-- Start Popover Button -->
                     <div id="popover" class="popover-bottom hide">
-                        <label for="12clock" class="label-clock-format">24-Hour Clock</label>
-                        <div class="onoffswitch">
-                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
-                                tabindex="0" checked>
-                            <label class="onoffswitch-label" for="myonoffswitch"></label>
+
+                        <!-- 24/12 Clock Toggle -->
+                        <div class="flex-toggle">
+                            <label for="clock-format" class="label-clock-format">24 hour clock</label>
+                            <div class="onoffswitch-clockformat">
+                                <input type="checkbox" name="onoffswitch-clockformat"
+                                    class="onoffswitch-checkbox-clockformat" id="myonoffswitch-clockformat"
+                                    tabindex="0">
+                                <label class="onoffswitch-label-clockformat" for="myonoffswitch-clockformat"
+                                    checked></label>
+                            </div>
                         </div>
+                        <!-- End 24/12 Clock Toggle -->
+
+                        <!-- Show Second Toggle -->
+                        <div class="flex-toggle">
+                            <label for="clock-format" class="label-clock-format">Show second </label>
+                            <div class="onoffswitch-showsecond">
+                                <input type="checkbox" name="onoffswitch-showsecond"
+                                    class="onoffswitch-checkbox-showsecond" id="myonoffswitch-showsecond" tabindex="0">
+                                <label class="onoffswitch-label-showsecond" for="myonoffswitch-showsecond"></label>
+                            </div>
+                        </div>
+                        <!-- End Show Second Toggle -->
+
                     </div>
                     <!-- End Popover Button -->
                 </div>
@@ -63,18 +82,44 @@
                     <div class="placeholder wallpaper">Change Wallpaper</div>
                 </div>
                 <div class="random-quotes">
+<<<<<<< HEAD
                     <img src="assets/img/icon/change.png" alt="Change Quotes">
+=======
+                    <img src="assets/img/icon/change.png" alt="Change Quotes" id="random-quotes">
+>>>>>>> ab9349d26bd3eccffe25c0b82d288e48f754b3eb
                     <div class="placeholder quotes">Change Quote</div>
                 </div>
             </div>
             <!-- End Icon Random Wallpaper and Change Quotes -->
+
+            <!-- Start Todo List -->
+            <div class="todo-wrapper">
+                <div class="todo-list-wrapper">
+                    <p class="todo-title-left">Today</p>
+
+                    <!-- Startlist todo dibuat didalam sini -->
+                    <div class="list-todo">
+
+                    </div>
+                    <!-- End list todo dibuat didalam sini -->
+                    <!-- start Todo title middle -->
+                    <div class="todo-caption-middle">
+                        <p>Add your TODO list today</p>
+                        <button class="btn-new-todo">New TODO</button>
+                    </div>
+                    <!-- end Todo tutle middle -->
+                    <input type="text" name="new-todo" id="new-todo-input" placeholder="New Todo">
+                </div>
+                <p class="todo-title-right"><span id="todo-opened">TODO</span></p>
+            </div>
+            <!-- End Todo List -->
         </div>
         <!-- End Display -->
     </div>
 
     <!-- My JS -->
-    <script src="js/storage.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/storage.js"></script>
     <script src="js/script.js"></script>
 
 </body>
